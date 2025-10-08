@@ -1,0 +1,36 @@
+---
+title: "upload_code"
+author: "ME"
+date: "2025-10-08"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(lubridate)
+```
+
+```{r}
+mortality_factors <- read.csv("mortality_factors.csv")
+mortality_race <- read.csv("mortality_race.CSV")
+```
+
+```{r}
+mortality_factors <- mortality_factors %>%
+  rename(state = Site.Name)
+mortality_factors <- mortality_factors %>%
+  rename(year = Year)
+
+mortality_race <- mortality_race %>%
+  rename(state = location_name)
+mortality_race <- mortality_race %>%
+  rename(year = year_id)
+```
+
+
+
+```{r}
+mortality_total <- left_join(mortality_factors, mortality_race, by = c("state", "year"))
+```
+
+
