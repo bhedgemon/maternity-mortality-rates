@@ -5,6 +5,7 @@ date: "2025-10-08"
 output: html_document
 ---
 
+# Joining the data
 ```{r}
 library(tidyverse)
 library(lubridate)
