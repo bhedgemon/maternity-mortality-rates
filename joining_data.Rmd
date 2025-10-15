@@ -13,17 +13,20 @@ library(tidyverse)
 library(lubridate)
 ```
 
+# Load in Datasets
 ```{r}
-mortality_factors <- read.csv("mortality_factors.csv")
+
 mortality_race <- read.csv("mortality_race.CSV")
+breast_cancer <- read.csv("breast_cancer_clean.csv")
+breast_cancer_deaths <- read.csv("breast_cancer_death_clean.csv")
+cervical_cancer <- read.csv("cervical_cancer_clean.csv")
+cervical_cancer_deaths <- read.csv("cervical_cancer_deaths_clean.csv")
+diabetes <- read.csv("diabetes_clean.csv")
+heart_disease <- read.csv("heart_disease_clean.csv")
 ```
 
+# Rename columns
 ```{r}
-mortality_factors <- mortality_factors %>%
-  rename(state = Site.Name)
-mortality_factors <- mortality_factors %>%
-  rename(year = Year)
-
 mortality_race <- mortality_race %>%
   rename(state = location_name)
 mortality_race <- mortality_race %>%
