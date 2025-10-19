@@ -51,23 +51,3 @@
 "West Virginia","33","32","0","N/A","0","0","0","0"
 "Wisconsin","57","47","N/A","N/A","0","0","0","N/A"
 "Wyoming","N/A","N/A","0","0","0","0","0","0"
-
-"Notes"
-"Age-adjusted rates per 100,000 women. Since death rates are affected by the population composition of a given area, age-adjusted death rates should be used for comparisons between areas because they control for differences in population composition. "
-""
-"Underlying cause of death is malignant neoplasms of cervix uteri (ICD-10 codes: C53)."
-""
-"Persons of Hispanic origin may be of any race, but are categorized as Hispanic; other groups are non-Hispanic. Race and Hispanic origin are reported separately on the death certificate in accordance with standards set forth by the Office of Management and Budget."
-
-"Sources"
-"KFF analysis of Centers for Disease Control and Prevention, National Center for Health Statistics. Underlying Cause of Death 1999-2023 on [CDC WONDER Online Database](http://wonder.cdc.gov/), released 2024. Data are from the Multiple Cause of Death Files, 1999-2023, as compiled from data provided by the 57 vital statistics jurisdictions through the Vital Statistics Cooperative Program, accessed January 30, 2025."
-
-"Definitions"
-"*Cervical cancer* is the uncontrolled growth of abnormal cell changes in the cervix, the lower part of the uterus, which opens into the vagina. Nearly all cervical cancer is caused by 10 to 15 high-risk types of a common sexually transmitted virus called the human papillomavirus (HPV). In most cases, the virus disappears within two years without symptoms or treatment. In a small percentage of women, however, the virus persists and normal cervical cells gradually change into abnormal, precancerous cells (also called cervical lesions)."
-""
-""
-"*N/A*: Data not available due to suppression constraints. Please click [here](https://wonder.cdc.gov/wonder/help/mcd-expanded.html#Assurance%20of%20Confidentiality) for further details."
-""
-"*NSD*: Not sufficient data. Figure does not meet standard of reliability or precision; based on fewer than 20 deaths in the numerator. Please click [here](https://wonder.cdc.gov/wonder/help/mcd-expanded.html#Unreliable) for further details."
-
-

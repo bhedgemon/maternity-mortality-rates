@@ -52,19 +52,3 @@
 "Wisconsin","12999","11917","688","175","114","87","N/A","16"
 "Wyoming","1126","1042","N/A","41","N/A","27","0","N/A"
 
-"Notes"
-"Causes of death attributable to heart disease mortality include ICD-10 Codes I00-I02;I05-I09; I11.0;I11.9;I13.0-I13.2;I13.9;I20-I28;I30-I51."
-""
-"Age-adjusted rates per 100,000 U.S. standard population. Since death rates are affected by the population composition of a given area, age-adjusted death rates should be used for comparisons between areas because they control for differences in population composition."
-""
-"Persons of Hispanic origin may be of any race, but are categorized as Hispanic; other groups are non-Hispanic. Race and Hispanic origin are reported separately on the death certificate in accordance with standards set forth by the Office of Management and Budget."
-
-"Sources"
-"Centers for Disease Control and Prevention, National Center for Health Statistics. Underlying Cause of Death 1999-2023 on [CDC WONDER Online Database](http://wonder.cdc.gov/). Data are from the Multiple Cause of Death Files, 1999-2023, as compiled from data provided by the 57 vital statistics jurisdictions through the Vital Statistics Cooperative Program. Accessed at [https://wonder.cdc.gov/mcd-icd10-expanded.html](https://wonder.cdc.gov/mcd-icd10-expanded.html) on January 30, 2025."
-
-"Definitions"
-"*N/A*: Data not available due to suppression constraints. Please click [here](https://wonder.cdc.gov/wonder/help/mcd-expanded.html#Assurance%20of%20Confidentiality) for further details."
-""
-"*NSD*: Not sufficient data. Figure does not meet standard of reliability or precision; based on fewer than 20 deaths in the numerator. Please click [here](https://wonder.cdc.gov/wonder/help/mcd-expanded.html#Unreliable) for further details."
-
-

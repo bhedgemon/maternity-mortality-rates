@@ -1,5 +1,4 @@
-
-"Location","Overall","White ","Black ","Hispanic","Asian/Native Hawaiian or Pacific Islander","American Indian or Alaska Native"
+"Location","Overall","White","Black","Hispanic","Asian/Native Hawaiian or Pacific Islander","American Indian or Alaska Native"
 "United States","7.4","6.8","8.1","9.6","5.8","10.9"
 "Alabama","9.5","9.1","9.8","NSD","NSD","NSD"
 "Alaska","7.1","NSD","NSD","NSD","NSD","NSD"
@@ -52,20 +51,3 @@
 "West Virginia","9.6","9.8","NSD","NSD","NSD","NSD"
 "Wisconsin","5.7","5.3","NSD","11.1","NSD","NSD"
 "Wyoming","6.5","6","NSD","NSD","NSD","NSD"
-
-"Notes"
-"Incidence data are compiled from cancer registries meeting U.S. Cancer Statistics data quality criteria covering 100% of the U.S. population. For more information, see U.S. Cancer Statistics Data Visualizations Tool [Technical Notes](https://www.cdc.gov/cancer/uscs/technical_notes/index.htm). Persons of Hispanic origin may be of any race, but are categorized as Hispanic; other groups are non-Hispanic. "
-""
-"Rates reflect the number of new cases of invasive cancer per 100,000 women per year and are age-adjusted to the 2000 U.S. standard population. For data on prior years, please see the [data source](https://wonder.cdc.gov/cancer-v2021.html)."
-
-"Sources"
-"KFF analysis of United States Cancer Statistics - Incidence: 1999 - 2021, WONDER Online Database. United States Department of Health and Human Services, Centers for Disease Control and Prevention and National Cancer Institute; 2024. Accessed at [https://wonder.cdc.gov/cancer-v2021.html](https://wonder.cdc.gov/cancer-v2021.html) on November 11, 2024."
-
-"Definitions"
-"*Cervical cancer* is the uncontrolled growth of abnormal cell changes in the cervix, the lower part of the uterus, which opens into the vagina. Nearly all cervical cancer is caused by 10 to 15 high-risk types of a common sexually transmitted virus called the human papillomavirus (HPV). In most cases, the virus disappears within two years without symptoms or treatment. In a small percentage of women, however, the virus persists and normal cervical cells gradually change into abnormal, precancerous cells (also called cervical lesions)."
-""
-"*N/A*: Rates are not available. Indiana's incidence data are not presented because the state did not meet U.S. Cancer Statistics publication criteria."
-""
-"*NSD*: Data is suppressed if fewer than 16 cases were reported."
-
-
