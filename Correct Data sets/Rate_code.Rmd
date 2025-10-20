@@ -1,0 +1,9 @@
+---
+title: "Rate_data"
+author: "ME"
+date: "2025-10-20"
+output: html_document
+---
+
+
+
