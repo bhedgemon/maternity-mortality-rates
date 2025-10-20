@@ -346,7 +346,7 @@ health_join <-
             by = c("state", "race")) 
 
 
-health_long <- join %>%
+health_long <- health_join %>%
   pivot_longer(c("breast_cancer", 
                  "breast_cancer_deaths", 
                  "cervical_cancer", 
