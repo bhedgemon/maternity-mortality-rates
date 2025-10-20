@@ -357,6 +357,9 @@ health_long <- join %>%
                names_to = "health_condition", 
                values_to = "incidence")
 
+health_long_clean <- 
+  health_long[!is.na(health_long$incidence),]
+
 
 
 ```
