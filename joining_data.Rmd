@@ -330,20 +330,20 @@ mental_health_long <-
 
 ```{r}
 
-join <-
+health_join <-
   breast_cancer_long %>%
   left_join(breast_cancer_deaths_long,
-            by = "state", "race") %>%
+            by = c("state", "race")) %>%
   left_join(cervical_cancer_long,
-            by = "state", "race") %>%
+            by = c("state", "race"))  %>%
   left_join(cervical_cancer_deaths_long,
-            by = "state", "race") %>%
+            by = c("state", "race")) %>%
   left_join(diabetes_long,
-            by = "state", "race") %>%
+            by = c("state", "race"))  %>%
   left_join(heart_disease_long,
-            by = "state", "race") %>%
+            by = c("state", "race"))  %>%
   left_join(mental_health_long,
-            by = "state", "race")
+            by = c("state", "race")) 
 
 
 health_long <- join %>%
