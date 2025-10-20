@@ -322,6 +322,13 @@ mental_health_long <-
          "race",
          "mental_health")
 
+mortality_race_long <-
+  mortality_race %>%
+  select("state",
+         "race",
+         "val") %>%
+  rename(maternal_mortality = val)
+
 ```
 
 
@@ -343,6 +350,8 @@ health_join <-
   left_join(heart_disease_long,
             by = c("state", "race"))  %>%
   left_join(mental_health_long,
+            by = c("state", "race"))  %>%
+  left_join(mortality_race_long,
             by = c("state", "race")) 
 
 
@@ -353,7 +362,8 @@ health_long <- health_join %>%
                  "cervical_cancer_deaths",
                  "diabetes",
                  "heart_disease",
-                 "mental_health"),
+                 "mental_health",
+                 "maternal_mortality"),
                names_to = "health_condition", 
                values_to = "incidence")
 
