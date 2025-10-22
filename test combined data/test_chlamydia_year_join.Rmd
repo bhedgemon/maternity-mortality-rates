@@ -12,7 +12,6 @@ library(dplyr)
 
 # Load in Datasets
 ```{r}
-chlamydia19 <- read.csv("2019_chlamydia.csv")
 chlamydia20 <- read.csv("2020_chlamydia.csv")
 chlamydia21 <- read.csv("2021_chlamydia.csv")
 chlamydia22 <- read.csv("2022_chlamydia.csv")
@@ -21,8 +20,6 @@ chlamydia23 <- read.csv("2023_chlamydia.csv")
 
 # Rename State Columns
 ```{r}
-chlamydia19 <- chlamydia19 %>%
-  rename(state = Location)
 
 chlamydia20 <- chlamydia20 %>%
   rename(state = Location)
@@ -68,8 +65,6 @@ chlamydia23 <- chlamydia23 %>%
 # add a year column
 ```{r}
 library(dplyr)
-chlamydia19y <- chlamydia19 %>%
-  mutate(year = 2019)
 
 chlamydia20y <- chlamydia20 %>%
   mutate(year = 2020)
@@ -86,7 +81,6 @@ chlamydia23y <- chlamydia23 %>%
 
 # deleting footnote column
 ```{r}
-chlamydia19y$Footnotes <- NULL
 chlamydia20y$Footnotes <- NULL
 chlamydia21y$Footnotes <- NULL
 chlamydia22y$Footnotes <- NULL
