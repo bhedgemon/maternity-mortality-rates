@@ -131,3 +131,35 @@ server <- function(input, output, session) {
       )
   })
 }
+
+
+
+
+
+
+
+
+
+server <- function(input, output) {
+  output$plot <- renderPlot({
+    hist(runif(input$n))
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

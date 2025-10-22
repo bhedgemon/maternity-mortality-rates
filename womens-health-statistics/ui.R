@@ -2,17 +2,21 @@ library(shiny)
 library(leaflet)
 library(dplyr)
 library(maps)
+library(tidyverse)
+library(ggplot2)
+library(RColorBrewer)
+library(shinyWidgets)
 
 navbarPage(
-  title = "Women's Health Outcomes in the United States",
+  title = "Women's Health in the United States",
   
   # Home Page Tab
   tabPanel("Home",
            fluidRow(
              column(12,
                     h2("Welcome"),
-                    p("This interactive dashboard explores women's health outcomes across 
-                      the United States, with a focus on disparities by state and race/ethnicity."),
+                    p("This interactive website explores women's health across 
+                      the United States. We put a specific focus on disparities by state and race/ethnicity."),
                     
                     h3("About This Project"),
                     p("Understanding health disparities is crucial for improving outcomes 
@@ -37,30 +41,45 @@ navbarPage(
            )
   ),
   
-  # Maternal Mortality Map Tab
-  tabPanel("Maternal Mortality by State and Race",
-           sidebarLayout(
-             sidebarPanel(
-               selectInput("race_select", 
-                           "Select Race/Ethnicity:",
-                           choices = unique(mortality_race_long$race),
-                           selected = "All racial and ethnic groups"),
-               
-               hr(),
-               
-               p("This map shows the average maternal mortality ratio (deaths per 100,000 live births) 
-                 across all years in the dataset."),
-               
-               p("Click on states to see specific values.")
-             ),
+  # Cancer Tab
+  navbarMenu("Cancer",
+             tabPanel("Breast Cancer",
+                      titlePanel("Breast Cancer Rates"),
+                      #setBackgroundColor("#FFEEF2"),
+                      mainPanel("statement- intro to topic of discussion"),
+                      #leafletOutput()
+                      ),
              
-             mainPanel(
-               leafletOutput("map", height = "600px"),
-               br(),
-               textOutput("selected_state_info")
-             )
-           )
+             tabPanel("Cervical Cancer",
+                      titlePanel("Cervical Cancer Rates"),
+                      #setBackgroundColor("#def7ec"),
+                      mainPanel("statement- intro to topic of discussion"),
+                      #leafletOutput()
+                      )
   ),
+# sexual infections
+             tabPanel("Sexual Infections",
+                      titlePanel("Sexually Transmitted Infection Rates"),
+                      #setBackgroundColor("#FFEEF2"),
+                      mainPanel("Chlamydia, Syphilis, Gonorrhea"),
+                      #leafletOutput()
+             ),
+ 
+# Maternal-Infant Health
+tabPanel("Maternal-Infant Health",
+         titlePanel("Maternal & Infant Mortality Rates"),
+         #setBackgroundColor("#FFEEF2"),
+         mainPanel("Statement TBD"),
+         #leafletOutput()
+),
+  
+# All health combined
+tabPanel("Changes in Health",
+         titlePanel("Women's Health Over Time"),
+         #setBackgroundColor("#FFEEF2"),
+         mainPanel("Statement TBD"),
+         #leafletOutput()
+),
   
   # About Tab
   tabPanel("About",
