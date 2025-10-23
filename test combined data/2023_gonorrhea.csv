@@ -1,5 +1,3 @@
-﻿"Title: Reported Gonorrhea Cases by Race/Ethnicity | KFF State Health Facts"
-"Timeframe: 2023"
 "Location","White","Black/African American","Hispanic/Latino","American Indian/Alaska Native","Asian","Native Hawaiian or Pacific Islander","Multiple races","Total",Footnotes
 "United States","67.1","557.8","128.1","292.2","44.2","181.3","176.3","179.5","1"
 "Alabama","53.7","473.3","31.7","99.5","47.9","105.8","222.2","226.9"
@@ -53,25 +51,3 @@
 "West Virginia","39.3","320.2","47.8","0","6.2","753.8","149.1","54.7"
 "Wisconsin","34.5","1182","119.8","167","34.9","242.9","14.7","118.5"
 "Wyoming","6","118.2","39.8","133","0","0","0","42.3"
-
-"Notes"
-"Rates are per 100,000 population."
-""
-"Data collected in 2020 should be interpreted with caution due to uncertainty and difficulties brought on by the Covid-19 pandemic. "
-""
-"Cases reported with unknown race/ethnicity are not included in this table."
-""
-"Trends in rates of reported cases of chlamydia are influenced by changes in incidence of infection, as well as changes in diagnostic, screening, and reporting practices. As chlamydial infections are usually asymptomatic, the number of infections identified and reported can increase as more people are screened even when incidence is flat or decreasing. Expanded use of more sensitive diagnostics tests (e.g., nucleic acid amplification tests) can also increase the number of infections identified and reported independent of increases in incidence. Additionally, increasing use of electronic laboratory reporting has likely increased the proportion of diagnosed cases that are reported. Consequently, an increasing chlamydia case rate may reflect increases in incidence of infection, screening coverage, and use of more sensitive tests, as well as more complete reporting.  Likewise, decreases in chlamydia case rates may suggest decreases in incidence of infection or screening coverage."
-
-"Sources"
-"KFF analysis of Centers for Disease Control and Prevention, Division of STD Prevention, National Center for HIV, Viral Hepatitis, STD, and TB Prevention, Centers for Disease Control and Prevention, [STI Statistics](https://www.cdc.gov/sti-statistics/index.html), accessed 2025."
-
-"Definitions"
-"*N/A*: Not Available."
-""
-"*NSD*: Not Sufficient Data"
-
-
-Footnotes
-"1. U.S. totals exclude data from the territories."
-"2. Tennessee transitioned STI surveillance information systems in September of 2023 which may have impacted the overall case counts."
