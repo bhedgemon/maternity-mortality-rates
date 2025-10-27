@@ -44,18 +44,20 @@ navbarPage(
   # Cancer Tab
   navbarMenu("Cancer",
              tabPanel("Breast Cancer",
-                      titlePanel("Breast Cancer Rates"),
-                      #setBackgroundColor("#FFEEF2"),
-                      mainPanel("statement- intro to topic of discussion"),
-                      #leafletOutput()
-                      ),
+                      div(style = "background-color: #FFEEF2; min-height: 100vh; padding: 20px;",
+                          titlePanel("Breast Cancer Rates"),
+                          mainPanel("statement- intro to topic of discussion"),
+                          #leafletOutput()
+                      )
+             ),
              
              tabPanel("Cervical Cancer",
-                      titlePanel("Cervical Cancer Rates"),
-                      #setBackgroundColor("#def7ec"),
-                      mainPanel("statement- intro to topic of discussion"),
-                      #leafletOutput()
+                      div(style = "background-color: #def7ec; min-height: 100vh; padding: 20px;",
+                          titlePanel("Cervical Cancer Rates"),
+                          mainPanel("statement- intro to topic of discussion"),
+                          #leafletOutput()
                       )
+             )
   ),
 # sexual infections
              tabPanel("Sexual Infections",
