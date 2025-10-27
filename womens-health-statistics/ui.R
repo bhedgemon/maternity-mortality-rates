@@ -47,7 +47,7 @@ navbarPage(
                       div(style = "background-color: #FFEEF2; min-height: 100vh; padding: 20px;",
                           titlePanel("Breast Cancer Rates"),
                           mainPanel("statement- intro to topic of discussion"),
-                          #leafletOutput()
+                          #leafletOutput("")
                       )
              ),
              

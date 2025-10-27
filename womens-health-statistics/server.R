@@ -4,7 +4,13 @@ library(dplyr)
 library(maps)
 library(htmltools)
 
-server <- function(input, output, session)
+server <- function(input, output) {
+  
+  
+ 
+  }
+
+  
 
 
 
