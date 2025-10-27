@@ -537,11 +537,34 @@ gonorrhea_all <- bind_rows(
   gonorrhea22y_long,
   gonorrhea23y_long)
 
+# Option 1: Add a disease identifier column to each dataset before binding
+chlamydia_all <- chlamydia_all %>% mutate(disease = "chlamydia")
+syphilis_all <- syphilis_all %>% mutate(disease = "syphilis")
+gonorrhea_all <- gonorrhea_all %>% mutate(disease = "gonorrhea")
+
+# Then rename the rate column to a common name in each
+chlamydia_all <- chlamydia_all %>% rename(rate = chlamydia)
+syphilis_all <- syphilis_all %>% rename(rate = syphilis)
+gonorrhea_all <- gonorrhea_all %>% rename(rate = gonorrhea)
+
 sex_infections_all <- bind_rows(
   chlamydia_all,
   syphilis_all,
   gonorrhea_all)
   
+sex_all <- bind_rows(
+  chlamydia20y_long,
+  chlamydia21y_long,
+  chlamydia22y_long,
+  chlamydia23y_long,
+  syphilis20y_long,
+  syphilis21y_long,
+  syphilis22y_long,
+  syphilis23y_long,
+  gonorrhea20y_long,
+  gonorrhea21y_long,
+  gonorrhea22y_long,
+  gonorrhea23y_long)
 ```
 
 
