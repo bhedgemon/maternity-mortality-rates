@@ -374,40 +374,147 @@ health_long_clean <-
 
 ```
 
-
-
-
 ```{r}
-library(dplyr)
+library(shiny)      # Load Shiny
+library(dplyr)      # Load dplyr for data manipulation (filter, join, etc.)
+library(DT)         # Load DT for interactive tables
+library(leaflet)    # Load leaflet for maps
+library(sf)         # Load sf package to work with spatial/geographic data
+library(htmltools)  # Load htmltools to create HTML formatted labels
 
-# Calculate average maternal mortality by state and race across all years
-mortality_avg <- mortality_race %>%
-  group_by(state, race_group) %>%
-  summarise(
-    avg_mortality = mean(val, na.rm = TRUE),
-    .groups = 'drop'
-  )
+# Load your data (runs once when app starts, before server function)
+states <- read_sf("us-states.geojson")  # Read the geojson file with state boundaries
+# breast_cancer_long <- read.csv("your_file.csv")  # Load your breast cancer data
 
-# Check the result
-head(mortality_avg)
-
-# See how many states and races you have
-mortality_avg %>%
-  summarise(
-    n_states = n_distinct(state),
-    n_races = n_distinct(race_group)
-  )
-```
-
-```{r}
-library(dplyr)
-
-# Calculate average maternal mortality by state and race across all years
-mortality_avg <- mortality_race %>%
-  group_by(state, race_group) %>%
-  summarise(
-    avg_mortality = mean(val, na.rm = TRUE),
-    .groups = 'drop'
-  )
+server <- function(input, output, session) {
+  # input: contains values from UI controls (like dropdown selections)
+  # output: where you send results to display in UI
+  # session: information about the current user session
+  
+  # Update the race dropdown with actual races from your data
+  updateSelectInput(session,                    # Which session to update
+                    "race_filter",              # Which input to update (the dropdown ID)
+                    choices = c("All", unique(breast_cancer_long$race)))  
+                    # Gets all unique races from your data and adds "All" option
+  
+  # REACTIVE DATA - This recalculates automatically when race_filter changes
+  filtered_data <- reactive({
+    # reactive({...}) creates code that "listens" for changes in inputs
+    
+    result <- breast_cancer_long  # Start with full dataset
+    
+    if (input$race_filter != "All") {  # If user selected a specific race
+      result <- result %>%              # Take the result and...
+        filter(race == input$race_filter)  # Keep only rows matching selected race
+    }
+    # If "All" is selected, no filtering happens
+    
+    result  # Return the filtered (or unfiltered) data
+  })
+  
+  # REACTIVE MAP DATA - Joins geography with filtered cancer data
+  map_data <- reactive({
+    # This also recalculates when filtered_data() changes
+    
+    states %>%                           # Start with state boundaries
+      left_join(filtered_data(),         # Combine with filtered cancer data
+                by = c("name" = "state")) # Match state names in geojson with
+                                          # state column in cancer data
+    # left_join keeps all states even if no cancer data exists for them
+  })
+  
+  # RENDER THE MAP - Creates the actual map visualization
+  output$cancer_map <- renderLeaflet({
+    # renderLeaflet tells Shiny this is a map output
+    # Automatically re-runs when map_data() changes
+    
+    data <- map_data()  # Get the current joined data
+    
+    # Define bins (ranges) for coloring the map
+    bins <- c(0, 50, 100, 150, 200, 250, 300, 350, Inf)
+    # States with rates 0-50 get one color, 50-100 another, etc.
+    # Inf means "infinity" - catches any value above 350
+    
+    # Create color palette
+    pal <- colorBin("RdPu",                    # Red-Purple color scheme
+                    domain = data$breast_cancer_rate,  # Values to color
+                    bins = bins)               # Use the bins defined above
+    
+    # Create hover labels (popup text when you mouse over states)
+    labels <- sprintf(
+      "<strong>%s</strong><br/>%g breast cancer rate",  
+      # sprintf formats text: %s = string, %g = number, <br/> = line break
+      data$name,                  # State name
+      data$breast_cancer_rate     # Cancer rate number
+    ) %>% lapply(HTML)            # Convert to HTML format for display
+    
+    # BUILD THE MAP
+    leaflet(data) %>%             # Start with the data
+      setView(-96, 37.8, 4) %>%   # Center map: longitude -96, latitude 37.8, zoom 4
+                                   # This centers on middle of US
+      
+      addProviderTiles("CartoDB.Positron") %>%  # Add background map tiles (base map)
+                                                 # CartoDB.Positron is light/minimal style
+      
+      addPolygons(                # Add the state shapes
+        fillColor = ~pal(breast_cancer_rate),  # Color states by cancer rate
+                                                # ~ means "use this column from data"
+        
+        weight = 2,               # Border thickness (2 pixels)
+        opacity = 1,              # Border opacity (1 = fully opaque)
+        color = "white",          # Border color
+        dashArray = "3",          # Border style (3 = small dashes)
+        fillOpacity = 0.7,        # State fill transparency (0.7 = 70% opaque)
+        
+        highlightOptions = highlightOptions(  # What happens when you hover over a state
+          weight = 5,             # Border gets thicker
+          color = "#666",         # Border turns gray
+          dashArray = "",         # Border becomes solid (not dashed)
+          fillOpacity = 0.7,      # Fill opacity stays same
+          bringToFront = TRUE),   # Bring hovered state to front
+        
+        label = labels,           # Attach the labels we created
+        labelOptions = labelOptions(  # Style the labels
+          style = list("font-weight" = "normal", padding = "3px 8px"),
+          textsize = "15px",      # Font size
+          direction = "auto")) %>%  # Label position adjusts automatically
+      
+      addLegend(                  # Add color legend
+        pal = pal,                # Use same color palette
+        values = ~breast_cancer_rate,  # Show range of cancer rates
+        opacity = 0.7,            # Legend transparency
+        title = "Breast Cancer Rate",  # Legend title
+        position = "bottomright") # Put legend in bottom right corner
+  })
+  
+  # RENDER THE TABLE - Creates interactive data table
+  output$cancer_table <- renderDT({
+    # renderDT tells Shiny this is a DT table output
+    
+    datatable(filtered_data(),    # Use the filtered data
+              options = list(
+                pageLength = 10,  # Show 10 rows per page
+                scrollX = TRUE),  # Allow horizontal scrolling if table is wide
+              rownames = FALSE)   # Don't show row numbers
+  })
+  
+  # RENDER SUMMARY STATISTICS - Creates text summary
+  output$summary_stats <- renderPrint({
+    # renderPrint captures text output (like from cat() or print())
+    
+    data <- filtered_data()       # Get current filtered data
+    
+    # cat() prints text to output
+    cat("Number of observations:", nrow(data), "\n")  # Count rows, \n = new line
+    cat("Race filter:", input$race_filter, "\n")      # Show selected race
+    cat("Average breast cancer rate:", 
+        round(mean(data$breast_cancer_rate, na.rm = TRUE), 2), "\n")
+        # mean() = average, na.rm = TRUE ignores missing values, round to 2 decimals
+    cat("Min rate:", 
+        round(min(data$breast_cancer_rate, na.rm = TRUE), 2), "\n")  # Minimum
+    cat("Max rate:", 
+        round(max(data$breast_cancer_rate, na.rm = TRUE), 2), "\n")  # Maximum
+  })
+}
 ```
 
