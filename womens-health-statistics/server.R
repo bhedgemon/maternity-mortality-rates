@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-library(shiny)      
-library(dplyr)      
-library(DT)        
-library(leaflet) 
-library(sf)        
-library(htmltools)  
-=======
 library(shiny)
 library(leaflet)
 library(dplyr)
@@ -28,21 +20,6 @@ server <- function(input, output) {
 =======
 server <- function(input, output, session) {
 >>>>>>> f3437e5364065e8ac1e2d5c93706786361ad2cc2
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> f5c28d85617c81aab6c4b8db3dfd80ce8c3d27f6
 
 
 states <- read_sf("/home/iduarte@ad.wlu.edu/maternity-mortality-rates/us-states.geojson")
