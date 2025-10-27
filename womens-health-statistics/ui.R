@@ -41,13 +41,50 @@ navbarPage(
            )
   ),
   
-  # Cancer Tab
   navbarMenu("Cancer",
              tabPanel("Breast Cancer",
                       div(style = "background-color: #FFEEF2; min-height: 100vh; padding: 20px;",
+<<<<<<< HEAD
                           titlePanel("Breast Cancer Rates"),
                           mainPanel("statement- intro to topic of discussion"),
                           #leafletOutput("")
+=======
+                          titlePanel("Breast Cancer Rates by State and Race"),
+                          
+                          # Add intro text
+                          fluidRow(
+                            column(12,
+                                   p("Explore breast cancer incidence rates across the United States. 
+                                     Use the dropdown to filter by race/ethnicity and see how rates 
+                                     vary geographically.")
+                            )
+                          ),
+                          
+                          # Sidebar with filter
+                          sidebarLayout(
+                            sidebarPanel(
+                              selectInput("race_filter", 
+                                          "Select Race/Ethnicity:",
+                                          choices = c("All"),
+                                          selected = "All"),
+                              
+                              br(),
+                              
+                              h4("Map Instructions"),
+                              p("• Hover over states to see exact rates"),
+                              p("• The map updates when you change the race filter"),
+                              p("• Darker colors indicate higher breast cancer rates")
+                            ),
+                            
+                            mainPanel(
+                              # The map
+                              leafletOutput("cancer_map", height = "500px"),
+                              
+                              br(),
+                        
+                            )
+                          )
+>>>>>>> f3437e5364065e8ac1e2d5c93706786361ad2cc2
                       )
              ),
              
@@ -59,12 +96,13 @@ navbarPage(
                       )
              )
   ),
+  
 # sexual infections
              tabPanel("Sexual Infections",
                       titlePanel("Sexually Transmitted Infection Rates"),
                       #setBackgroundColor("#FFEEF2"),
                       mainPanel("Chlamydia, Syphilis, Gonorrhea"),
-                      #leafletOutput()
+                      leafletOutput()
              ),
  
 # Maternal-Infant Health

@@ -24,6 +24,8 @@ syphilis20 <- read.csv("2020_syphilis.csv")
 syphilis21 <- read.csv("2021_syphilis.csv")
 syphilis22 <- read.csv("2022_syphilis.csv")
 syphilis23 <- read.csv("2023_syphilis.csv")
+code_state <- read_sf("code_state.geojson")
+chlamydia_test <- read.csv("chlamydia_test.csv")
 ```
 
 # Rename State Columns
@@ -39,7 +41,7 @@ chlamydia22 <- chlamydia22 %>%
   rename(state = Location)
 
 chlamydia23 <- chlamydia23 %>%
-  rename(state = Location)
+  rename(name = Location)
 
 # Gonorrhea
 gonorrhea20 <- gonorrhea20 %>%
@@ -66,6 +68,7 @@ syphilis22 <- syphilis22 %>%
 
 syphilis23 <- syphilis23 %>%
   rename(state = Location)
+
 
 ```
 
@@ -453,7 +456,7 @@ chlamydia22y_long <-
 
 chlamydia23y_long <-
   chlamydia23_long %>%
-  select("state",
+  select("name",
          "year",
          "race",
          "chlamydia")
@@ -567,5 +570,21 @@ sex_all <- bind_rows(
   gonorrhea23y_long)
 ```
 
+```{r}
+chlamydia23yd <- chlamydia23y[-1,]
+
+```
+```{r}
+write.csv(chlamydia23yd, "chlamydia_test.csv", row.names = FALSE)
+
+
+join <-
+  code_state %>%
+  left_join(chlamydia_test,
+            by = c("name"))
+```
+```{r}
+write.csv(join, "state_test.csv", row.names = FALSE)
+```
 
 
