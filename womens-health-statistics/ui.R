@@ -64,7 +64,7 @@ navbarPage(
                       titlePanel("Sexually Transmitted Infection Rates"),
                       #setBackgroundColor("#FFEEF2"),
                       mainPanel("Chlamydia, Syphilis, Gonorrhea"),
-                      #leafletOutput()
+                      leafletOutput()
              ),
  
 # Maternal-Infant Health
