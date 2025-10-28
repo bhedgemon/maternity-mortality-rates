@@ -44,18 +44,22 @@ navbarPage(
   navbarMenu("Cancer",
              tabPanel("Breast Cancer",
                       div(style = "background-color: #FFEEF2; min-height: 100vh; padding: 20px;",
-
+                          
                           titlePanel("Breast Cancer Incidence Rates"),
-                          mainPanel("statement- intro to topic of discussion"),
-
+                          fluidRow(
+                            column(12,
+                                   p("statement- intro to topic of discussion")
+                            )
+                          ),
+                          
                           titlePanel("Breast Cancer Rates by State and Race"),
                           
                           # Add intro text
                           fluidRow(
                             column(12,
                                    p("Explore breast cancer incidence rates across the United States. 
-                                     Use the dropdown to filter by race/ethnicity and see how rates 
-                                     vary geographically.")
+                                   Use the dropdown to filter by race/ethnicity and see how rates 
+                                   vary geographically.")
                             )
                           ),
                           
@@ -78,23 +82,39 @@ navbarPage(
                             mainPanel(
                               # The map
                               leafletOutput("cancer_map", height = "500px"),
-                              
-                              br(),
-                        
+                              br()
+                            )
+                          ),
+                          
+                          # Second section - Breast Cancer by Race
+                          titlePanel("Breast Cancer Incidence by Race"),
+                          sidebarLayout(
+                            sidebarPanel(
+                              selectInput("state", 
+                                          "Choose a state:",
+                                          choices = unique(breast_cancer_long$state),
+                                          selected = "United States")
+                            ),
+                            
+                            mainPanel(
+                              plotOutput("breast_race_plot")
                             )
                           )
-
-                      )
-             ),
+                      )  # Close div
+             ),  # Close tabPanel - THIS WAS MISSING
              
              tabPanel("Cervical Cancer",
                       div(style = "background-color: #def7ec; min-height: 100vh; padding: 20px;",
                           titlePanel("Cervical Cancer Rates"),
-                          mainPanel("statement- intro to topic of discussion"),
+                          fluidRow(
+                            column(12,
+                                   p("statement- intro to topic of discussion")
+                            )
+                          )
                           #leafletOutput()
                       )
              )
-  ),
+  ),  # Close navbarMenu
   
 # sexual infections
              tabPanel("Sexual Infections",

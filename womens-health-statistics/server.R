@@ -10,6 +10,8 @@ library(sf)
 
 
 states <- read_sf("us-states.geojson")
+#breast_cancer_long <- read.csv("breast_cancer_long.csv") 
+
 server <- function(input, output, session) {
   updateSelectInput(session,
                     "race_filter",
@@ -79,5 +81,51 @@ server <- function(input, output, session) {
                 title = "Breast Cancer Rate",
                 position = "bottomright")
   })
+  
+  
+  #Breast Cancer Race Plot
+  output$breast_race_plot <- renderPlot({
+    
+    
+    state_data <- breast_cancer_long[breast_cancer_long$state == input$state, ]
+    
+    
+    state_data <- state_data[!is.na(state_data$breast_cancer), ]
+    
+    
+    rates <- state_data$breast_cancer
+    races <- state_data$race
+    
+    races_twolines <- gsub("_", "\n", races)
+    
+    
+    race_colors <- c(
+      "White" = "#FF8BA0",
+      "Black" = "#FFA8B5",
+      "Hispanic" = "#FFCCCB",
+      "Asian_NativeHawaiian" = "#FFDCD1",
+      "AmericanIndian_AlaskaNative" = "#FF8886",
+      "Overall" = "#FF8663"
+    )
+    
+    
+    bar_colors <- race_colors[races]
+    
+    
+    barplot(rates,
+            names.arg = races_twolines,
+            main = input$state,
+            col = bar_colors,
+            ylab = "Incidence Rate per 100,000 Women",
+            xlab = "Race",
+            cex.names = 0.9,  # Size of bar labels
+            cex.axis = 1.1,   # Size of axis numbers
+            cex.main = 1.5,   # Size of title
+            font.main = 2)    # Bold title (1=normal, 2=bold, 3=italic, 4=bold italic)
+    
+  })
+  
+  
 }
+
 
