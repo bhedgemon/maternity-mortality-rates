@@ -27,7 +27,7 @@ navbarPage(
                  column(12,
                         h2("Welcome", style = "color: #2C3E50; font-weight: 700;"),
                         p("This interactive website explores women's health across 
-                          the United States. We put a specific focus on disparities by state and race/ethnicity.",
+                          the United States. We put a specific focus on disparities by state and race",
                           style = "font-size: 16px;"),
                         
                         h3("About This Project", style = "color: #2C3E50; margin-top: 30px;"),
@@ -69,7 +69,7 @@ navbarPage(
                                        border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);",
                               h1("Breast Cancer Incidence Rates", 
                                  style = "color: #2C3E50; font-weight: 700; margin-bottom: 10px;"),
-                              p("Understanding breast cancer disparities across the United States",
+                              p("Understanding breast cancer incidence rates across the United States",
                                 style = "color: #555; font-size: 18px; margin: 0;")
                           ),
                           
@@ -84,7 +84,7 @@ navbarPage(
                               fluidRow(
                                 column(12,
                                        p("Explore breast cancer incidence rates across the United States. 
-                                         Use the dropdown to filter by race/ethnicity and see how rates 
+                                         Use the dropdown to filter by race and see how rates 
                                          vary geographically.",
                                          style = "color: #555; font-size: 16px; margin-bottom: 20px;")
                                 )
@@ -95,7 +95,7 @@ navbarPage(
                                   style = "background: #FFF5F7; border-radius: 10px; padding: 20px;",
                                   
                                   selectInput("race_filter", 
-                                              "Select Race/Ethnicity:",
+                                              "Select Race:",
                                               choices = c("All"),
                                               selected = "All"),
                                   
@@ -137,7 +137,7 @@ navbarPage(
                                   hr(style = "border-color: #FFB6C1;"),
                                   
                                   div(style = "background: white; padding: 15px; border-radius: 8px;",
-                                      p("This chart shows breast cancer incidence rates by race/ethnicity 
+                                      p("This chart shows breast cancer incidence rates by race 
                                         for your selected state.", 
                                         style = "color: #555; margin: 0;")
                                   )
@@ -159,7 +159,7 @@ navbarPage(
                                        background: white; padding: 30px; 
                                        border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);",
                               h1("Cervical Cancer Rates", 
-                                 style = "color: #2E7D32; font-weight: 700; margin-bottom: 10px;"),
+                                 style = "color: #2C3E50; font-weight: 700; margin-bottom: 10px;"),
                               p("Statement - intro to topic of discussion",
                                 style = "color: #555; font-size: 18px; margin: 0;")
                           )

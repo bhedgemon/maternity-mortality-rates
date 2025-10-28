@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 "state","race","breast_cancer"
+=======
+"name","race","breast_cancer"
+>>>>>>> 76f0899 (my edits to make the state map work)
 "United States","White",139.2
 "United States","Black",131.9
 "United States","Hispanic",105.7
