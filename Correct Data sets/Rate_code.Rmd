@@ -350,5 +350,13 @@ health_long_clean <-
 ```
 
 
+```{r}
+
+
+write.csv(breast_cancer_long, "breast_cancer_long.csv", row.names = FALSE)
+```
+
+
+
 
 
