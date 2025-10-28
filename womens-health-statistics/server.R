@@ -5,24 +5,11 @@ library(maps)
 library(htmltools)
 library(sf)
 
-<<<<<<< HEAD
-server <- function(input, output) {
-  
-  
- 
-  }
-
   
 
 
 
-
-=======
-server <- function(input, output, session) {
->>>>>>> f3437e5364065e8ac1e2d5c93706786361ad2cc2
-
-
-states <- read_sf("/home/iduarte@ad.wlu.edu/maternity-mortality-rates/us-states.geojson")
+states <- read_sf("us-states.geojson")
 server <- function(input, output, session) {
   updateSelectInput(session,
                     "race_filter",

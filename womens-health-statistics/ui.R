@@ -44,11 +44,10 @@ navbarPage(
   navbarMenu("Cancer",
              tabPanel("Breast Cancer",
                       div(style = "background-color: #FFEEF2; min-height: 100vh; padding: 20px;",
-<<<<<<< HEAD
-                          titlePanel("Breast Cancer Rates"),
+
+                          titlePanel("Breast Cancer Incidence Rates"),
                           mainPanel("statement- intro to topic of discussion"),
-                          #leafletOutput("")
-=======
+
                           titlePanel("Breast Cancer Rates by State and Race"),
                           
                           # Add intro text
@@ -84,7 +83,7 @@ navbarPage(
                         
                             )
                           )
->>>>>>> f3437e5364065e8ac1e2d5c93706786361ad2cc2
+
                       )
              ),
              
@@ -102,7 +101,7 @@ navbarPage(
                       titlePanel("Sexually Transmitted Infection Rates"),
                       #setBackgroundColor("#FFEEF2"),
                       mainPanel("Chlamydia, Syphilis, Gonorrhea"),
-                      leafletOutput()
+                      #leafletOutput()
              ),
  
 # Maternal-Infant Health
