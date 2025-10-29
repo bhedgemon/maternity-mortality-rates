@@ -10,6 +10,7 @@ output: html_document
 library(tidyverse)
 library(lubridate)
 library(dplyr)
+library(sf)
 ```
 
 # Load in Datasets
@@ -23,6 +24,7 @@ cervical_cancer_deaths <- read.csv("cervical_death_rate_clean.csv")
 chlamydia <- read.csv("chlamydia_rate_clean.csv")
 gonorrhea <- read.csv("gonorrhea_rate_clean.csv")
 syphilis <- read.csv("syphilis_rate_clean.csv")
+#us_states <- read_sf("code_state.geojson")
 ```
 
 # Rename State Columns
@@ -31,7 +33,7 @@ mortality_race <- mortality_race %>%
   rename(state = location_name)
 
 breast_cancer <- breast_cancer %>%
-  rename(state = Location)
+  rename(name = Location)
 
 breast_cancer_deaths <- breast_cancer_deaths%>%
   rename(state = Location)
@@ -348,6 +350,20 @@ health_long_clean <-
 
 
 ```
+
+```{r}
+
+breast_cancer <- breast_cancer[-1,]
+write.csv(breast_cancer, "breast_cancer.csv", row.names = FALSE)
+```
+
+join2 <-
+  code_state %>%
+  left_join(breast_cancer,
+            by = c("name"))
+
+write.csv(join2, "state_breast.csv", row.names = FALSE)
+
 
 
 ```{r}

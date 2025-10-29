@@ -80,7 +80,7 @@ navbarPage(
   ),
   
   navbarMenu("Cancer",
-     
+             
              tabPanel("Breast Cancer",
                       div(style = "background: linear-gradient(135deg, #FFF5F7 0%, #FFE4E9 100%); 
                                    min-height: 100vh; padding: 40px 20px;",
@@ -212,7 +212,7 @@ navbarPage(
                       )
              ),
              
- 
+             
              tabPanel("Cervical Cancer",
                       div(style = "background: linear-gradient(135deg, #E0F7FA 0%, #B2EBF2 100%); 
                                    min-height: 100vh; padding: 40px 20px;",

@@ -12,7 +12,7 @@ cervical_cancer_long <- read.csv("cervical_cancer_long.csv")
 
 server <- function(input, output, session) {
   
-
+  
   
   # Update race filter choices
   updateSelectInput(session,
@@ -188,7 +188,7 @@ server <- function(input, output, session) {
     
   }, bg = "white")
   
-
+  
   
   # Update cervical race filter choices
   updateSelectInput(session,
@@ -365,4 +365,3 @@ server <- function(input, output, session) {
   }, bg = "white")
   
 }
-

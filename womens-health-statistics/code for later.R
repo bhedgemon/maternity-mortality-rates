@@ -127,3 +127,88 @@ observeEvent(input$race_select, {
 })
 }
 
+#bailey code for later
+server <- function(input, output, session) {
+  breast_data <- read_csv("breast_cancer.csv")
+  states <- read_sf("us-states.geojson")
+  # Join data by state name
+  merged_data <- left_join(states, breast_data, by = c("name" = "name"))
+  
+  output$map <- renderLeaflet({
+    # Initial empty leaflet (centered)
+    leaflet(merged_data) %>%
+      setView(-96, 37.8, 4) %>%
+      addProviderTiles("CartoDB.Positron")
+  })
+  
+  # Reactive observer to update map whenever race is changed
+  observe({
+    race_col <- input$race_col
+    bins <- c(0, 50, 100, 125, 150, 175, 200, Inf)
+    pal <- colorBin("YlOrRd", domain = merged_data[[race_col]], bins = bins, na.color = "gray")
+    
+    labels <- sprintf(
+      "<strong>%s</strong><br/>%s Rate: %g",
+      merged_data$name, race_col, merged_data[[race_col]]
+    ) %>% lapply(HTML)
+    
+    leafletProxy("map", data = merged_data) %>%
+      clearShapes() %>%
+      clearControls() %>%
+      addPolygons(
+        fillColor = ~pal(get(race_col)),
+        weight = 1,
+        opacity = 1,
+        color = "white",
+        dashArray = "3",
+        fillOpacity = 0.8,
+        highlightOptions = highlightOptions(
+          weight = 2,
+          color = "#666",
+          dashArray = "",
+          fillOpacity = 0.9,
+          bringToFront = TRUE
+        ),
+        label = labels,
+        labelOptions = labelOptions(
+          style = list("font-weight" = "normal", padding = "3px 8px"),
+          textsize = "14px",
+          direction = "auto"
+        )
+      ) %>%
+      addLegend(
+        pal = pal,
+        values = merged_data[[race_col]],
+        opacity = 0.7,
+        title = paste("Breast Cancer Rate -", race_col),
+        position = "bottomright"
+      )
+  })
+}
+
+
+# Add intro text
+fluidRow(
+  column(12,
+         p("Explore breast cancer incidence rates across the United States. 
+            Use the dropdown to filter by race/ethnicity and see how rates 
+            vary geographically.")
+  )
+),
+
+# Sidebar with filter
+sidebarLayout(
+  sidebarPanel(
+    selectInput("race_col", "Select Race Category:",
+                choices = c("Overall", "White", "Black", "Hispanic", 
+                            "Asian_NativeHawaiian", "AmericanIndian_AlaskaNative"),
+                selected = "Overall"),
+    width = 3
+  ),
+  
+  mainPanel(
+    leafletOutput("map", height = "700px")
+  )
+)
+)
+),
