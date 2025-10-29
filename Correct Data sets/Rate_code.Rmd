@@ -354,6 +354,7 @@ health_long_clean <-
 
 
 write.csv(breast_cancer_long, "breast_cancer_long.csv", row.names = FALSE)
+write.csv(cervical_cancer_long, "cervical_cancer_long.csv", row.names = FALSE)
 ```
 
 

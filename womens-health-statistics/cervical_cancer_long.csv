@@ -1,0 +1,313 @@
+"state","race","cervical_cancer"
+"United States","White",6.8
+"United States","Black",8.1
+"United States","Hispanic",9.6
+"United States","Asian_NativeHawaiian",5.8
+"United States","AmericanIndian_AlaskaNative",10.9
+"United States","Overall",7.4
+"Alabama","White",9.1
+"Alabama","Black",9.8
+"Alabama","Hispanic",NA
+"Alabama","Asian_NativeHawaiian",NA
+"Alabama","AmericanIndian_AlaskaNative",NA
+"Alabama","Overall",9.5
+"Alaska","White",NA
+"Alaska","Black",NA
+"Alaska","Hispanic",NA
+"Alaska","Asian_NativeHawaiian",NA
+"Alaska","AmericanIndian_AlaskaNative",NA
+"Alaska","Overall",7.1
+"Arizona","White",5.8
+"Arizona","Black",NA
+"Arizona","Hispanic",8.8
+"Arizona","Asian_NativeHawaiian",NA
+"Arizona","AmericanIndian_AlaskaNative",NA
+"Arizona","Overall",6.5
+"Arkansas","White",10.5
+"Arkansas","Black",8.3
+"Arkansas","Hispanic",NA
+"Arkansas","Asian_NativeHawaiian",NA
+"Arkansas","AmericanIndian_AlaskaNative",NA
+"Arkansas","Overall",10.2
+"California","White",5.7
+"California","Black",6.3
+"California","Hispanic",8.9
+"California","Asian_NativeHawaiian",6.5
+"California","AmericanIndian_AlaskaNative",NA
+"California","Overall",7.1
+"Colorado","White",5.9
+"Colorado","Black",NA
+"Colorado","Hispanic",9.9
+"Colorado","Asian_NativeHawaiian",NA
+"Colorado","AmericanIndian_AlaskaNative",NA
+"Colorado","Overall",6.4
+"Connecticut","White",4.9
+"Connecticut","Black",NA
+"Connecticut","Hispanic",10.5
+"Connecticut","Asian_NativeHawaiian",NA
+"Connecticut","AmericanIndian_AlaskaNative",NA
+"Connecticut","Overall",5.6
+"Delaware","White",7.5
+"Delaware","Black",NA
+"Delaware","Hispanic",NA
+"Delaware","Asian_NativeHawaiian",NA
+"Delaware","AmericanIndian_AlaskaNative",NA
+"Delaware","Overall",7.5
+"District of Columbia","White",NA
+"District of Columbia","Black",14.8
+"District of Columbia","Hispanic",NA
+"District of Columbia","Asian_NativeHawaiian",NA
+"District of Columbia","AmericanIndian_AlaskaNative",NA
+"District of Columbia","Overall",10.1
+"Florida","White",9.1
+"Florida","Black",10.6
+"Florida","Hispanic",9.6
+"Florida","Asian_NativeHawaiian",5.9
+"Florida","AmericanIndian_AlaskaNative",NA
+"Florida","Overall",9.2
+"Georgia","White",7.7
+"Georgia","Black",7.5
+"Georgia","Hispanic",7.6
+"Georgia","Asian_NativeHawaiian",NA
+"Georgia","AmericanIndian_AlaskaNative",NA
+"Georgia","Overall",7.5
+"Hawaii","White",NA
+"Hawaii","Black",NA
+"Hawaii","Hispanic",NA
+"Hawaii","Asian_NativeHawaiian",5.3
+"Hawaii","AmericanIndian_AlaskaNative",NA
+"Hawaii","Overall",5.4
+"Idaho","White",5.6
+"Idaho","Black",NA
+"Idaho","Hispanic",NA
+"Idaho","Asian_NativeHawaiian",NA
+"Idaho","AmericanIndian_AlaskaNative",NA
+"Idaho","Overall",5.3
+"Illinois","White",6.4
+"Illinois","Black",10.2
+"Illinois","Hispanic",7.9
+"Illinois","Asian_NativeHawaiian",NA
+"Illinois","AmericanIndian_AlaskaNative",NA
+"Illinois","Overall",7
+"Indiana","White",NA
+"Indiana","Black",NA
+"Indiana","Hispanic",NA
+"Indiana","Asian_NativeHawaiian",NA
+"Indiana","AmericanIndian_AlaskaNative",NA
+"Indiana","Overall",NA
+"Iowa","White",7.9
+"Iowa","Black",NA
+"Iowa","Hispanic",NA
+"Iowa","Asian_NativeHawaiian",NA
+"Iowa","AmericanIndian_AlaskaNative",NA
+"Iowa","Overall",7.9
+"Kansas","White",7.4
+"Kansas","Black",NA
+"Kansas","Hispanic",12.2
+"Kansas","Asian_NativeHawaiian",NA
+"Kansas","AmericanIndian_AlaskaNative",NA
+"Kansas","Overall",8.3
+"Kentucky","White",9.9
+"Kentucky","Black",10.8
+"Kentucky","Hispanic",NA
+"Kentucky","Asian_NativeHawaiian",NA
+"Kentucky","AmericanIndian_AlaskaNative",NA
+"Kentucky","Overall",9.9
+"Louisiana","White",8.6
+"Louisiana","Black",11
+"Louisiana","Hispanic",15.2
+"Louisiana","Asian_NativeHawaiian",NA
+"Louisiana","AmericanIndian_AlaskaNative",NA
+"Louisiana","Overall",9.8
+"Maine","White",7.2
+"Maine","Black",NA
+"Maine","Hispanic",NA
+"Maine","Asian_NativeHawaiian",NA
+"Maine","AmericanIndian_AlaskaNative",NA
+"Maine","Overall",7.5
+"Maryland","White",4.8
+"Maryland","Black",6.6
+"Maryland","Hispanic",8.2
+"Maryland","Asian_NativeHawaiian",NA
+"Maryland","AmericanIndian_AlaskaNative",NA
+"Maryland","Overall",5.7
+"Massachusetts","White",3.2
+"Massachusetts","Black",7
+"Massachusetts","Hispanic",5.3
+"Massachusetts","Asian_NativeHawaiian",NA
+"Massachusetts","AmericanIndian_AlaskaNative",NA
+"Massachusetts","Overall",3.8
+"Michigan","White",5.8
+"Michigan","Black",6.5
+"Michigan","Hispanic",9.6
+"Michigan","Asian_NativeHawaiian",NA
+"Michigan","AmericanIndian_AlaskaNative",NA
+"Michigan","Overall",6
+"Minnesota","White",5
+"Minnesota","Black",11.7
+"Minnesota","Hispanic",NA
+"Minnesota","Asian_NativeHawaiian",NA
+"Minnesota","AmericanIndian_AlaskaNative",NA
+"Minnesota","Overall",5.8
+"Mississippi","White",10.1
+"Mississippi","Black",10.2
+"Mississippi","Hispanic",NA
+"Mississippi","Asian_NativeHawaiian",NA
+"Mississippi","AmericanIndian_AlaskaNative",NA
+"Mississippi","Overall",10.1
+"Missouri","White",8.4
+"Missouri","Black",8.4
+"Missouri","Hispanic",NA
+"Missouri","Asian_NativeHawaiian",NA
+"Missouri","AmericanIndian_AlaskaNative",NA
+"Missouri","Overall",8.3
+"Montana","White",6.6
+"Montana","Black",NA
+"Montana","Hispanic",NA
+"Montana","Asian_NativeHawaiian",NA
+"Montana","AmericanIndian_AlaskaNative",NA
+"Montana","Overall",7
+"Nebraska","White",6.9
+"Nebraska","Black",NA
+"Nebraska","Hispanic",NA
+"Nebraska","Asian_NativeHawaiian",NA
+"Nebraska","AmericanIndian_AlaskaNative",NA
+"Nebraska","Overall",7.1
+"Nevada","White",9.2
+"Nevada","Black",NA
+"Nevada","Hispanic",8.5
+"Nevada","Asian_NativeHawaiian",8.7
+"Nevada","AmericanIndian_AlaskaNative",NA
+"Nevada","Overall",8.1
+"New Hampshire","White",5.8
+"New Hampshire","Black",NA
+"New Hampshire","Hispanic",NA
+"New Hampshire","Asian_NativeHawaiian",NA
+"New Hampshire","AmericanIndian_AlaskaNative",NA
+"New Hampshire","Overall",5.5
+"New Jersey","White",6.3
+"New Jersey","Black",9.5
+"New Jersey","Hispanic",10.4
+"New Jersey","Asian_NativeHawaiian",5.3
+"New Jersey","AmericanIndian_AlaskaNative",NA
+"New Jersey","Overall",7.5
+"New Mexico","White",7.2
+"New Mexico","Black",NA
+"New Mexico","Hispanic",8.9
+"New Mexico","Asian_NativeHawaiian",NA
+"New Mexico","AmericanIndian_AlaskaNative",NA
+"New Mexico","Overall",7.8
+"New York","White",6
+"New York","Black",8.4
+"New York","Hispanic",8.4
+"New York","Asian_NativeHawaiian",6.3
+"New York","AmericanIndian_AlaskaNative",NA
+"New York","Overall",7
+"North Carolina","White",6.7
+"North Carolina","Black",5.9
+"North Carolina","Hispanic",7.8
+"North Carolina","Asian_NativeHawaiian",NA
+"North Carolina","AmericanIndian_AlaskaNative",NA
+"North Carolina","Overall",6.6
+"North Dakota","White",NA
+"North Dakota","Black",NA
+"North Dakota","Hispanic",NA
+"North Dakota","Asian_NativeHawaiian",NA
+"North Dakota","AmericanIndian_AlaskaNative",NA
+"North Dakota","Overall",5.4
+"Ohio","White",7.8
+"Ohio","Black",8.1
+"Ohio","Hispanic",NA
+"Ohio","Asian_NativeHawaiian",NA
+"Ohio","AmericanIndian_AlaskaNative",NA
+"Ohio","Overall",7.7
+"Oklahoma","White",8.9
+"Oklahoma","Black",11.9
+"Oklahoma","Hispanic",NA
+"Oklahoma","Asian_NativeHawaiian",NA
+"Oklahoma","AmericanIndian_AlaskaNative",20.9
+"Oklahoma","Overall",10.2
+"Oregon","White",5.4
+"Oregon","Black",NA
+"Oregon","Hispanic",8.9
+"Oregon","Asian_NativeHawaiian",NA
+"Oregon","AmericanIndian_AlaskaNative",NA
+"Oregon","Overall",6.1
+"Pennsylvania","White",6.7
+"Pennsylvania","Black",7.1
+"Pennsylvania","Hispanic",8.1
+"Pennsylvania","Asian_NativeHawaiian",NA
+"Pennsylvania","AmericanIndian_AlaskaNative",NA
+"Pennsylvania","Overall",6.9
+"Rhode Island","White",5
+"Rhode Island","Black",NA
+"Rhode Island","Hispanic",NA
+"Rhode Island","Asian_NativeHawaiian",NA
+"Rhode Island","AmericanIndian_AlaskaNative",NA
+"Rhode Island","Overall",5.4
+"South Carolina","White",7.6
+"South Carolina","Black",6.5
+"South Carolina","Hispanic",NA
+"South Carolina","Asian_NativeHawaiian",NA
+"South Carolina","AmericanIndian_AlaskaNative",NA
+"South Carolina","Overall",7
+"South Dakota","White",4.9
+"South Dakota","Black",NA
+"South Dakota","Hispanic",NA
+"South Dakota","Asian_NativeHawaiian",NA
+"South Dakota","AmericanIndian_AlaskaNative",NA
+"South Dakota","Overall",5.5
+"Tennessee","White",6.9
+"Tennessee","Black",7.9
+"Tennessee","Hispanic",NA
+"Tennessee","Asian_NativeHawaiian",NA
+"Tennessee","AmericanIndian_AlaskaNative",NA
+"Tennessee","Overall",7
+"Texas","White",8.3
+"Texas","Black",9.3
+"Texas","Hispanic",12.5
+"Texas","Asian_NativeHawaiian",5
+"Texas","AmericanIndian_AlaskaNative",NA
+"Texas","Overall",9.6
+"Utah","White",5.8
+"Utah","Black",NA
+"Utah","Hispanic",11.4
+"Utah","Asian_NativeHawaiian",NA
+"Utah","AmericanIndian_AlaskaNative",NA
+"Utah","Overall",6.8
+"Vermont","White",NA
+"Vermont","Black",NA
+"Vermont","Hispanic",NA
+"Vermont","Asian_NativeHawaiian",NA
+"Vermont","AmericanIndian_AlaskaNative",NA
+"Vermont","Overall",4.8
+"Virginia","White",5.4
+"Virginia","Black",5.6
+"Virginia","Hispanic",8.4
+"Virginia","Asian_NativeHawaiian",NA
+"Virginia","AmericanIndian_AlaskaNative",NA
+"Virginia","Overall",5.7
+"Washington","White",5.6
+"Washington","Black",NA
+"Washington","Hispanic",10.5
+"Washington","Asian_NativeHawaiian",8.3
+"Washington","AmericanIndian_AlaskaNative",NA
+"Washington","Overall",6.6
+"West Virginia","White",9.8
+"West Virginia","Black",NA
+"West Virginia","Hispanic",NA
+"West Virginia","Asian_NativeHawaiian",NA
+"West Virginia","AmericanIndian_AlaskaNative",NA
+"West Virginia","Overall",9.6
+"Wisconsin","White",5.3
+"Wisconsin","Black",NA
+"Wisconsin","Hispanic",11.1
+"Wisconsin","Asian_NativeHawaiian",NA
+"Wisconsin","AmericanIndian_AlaskaNative",NA
+"Wisconsin","Overall",5.7
+"Wyoming","White",6
+"Wyoming","Black",NA
+"Wyoming","Hispanic",NA
+"Wyoming","Asian_NativeHawaiian",NA
+"Wyoming","AmericanIndian_AlaskaNative",NA
+"Wyoming","Overall",6.5
