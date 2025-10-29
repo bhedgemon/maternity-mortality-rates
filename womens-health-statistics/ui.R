@@ -9,14 +9,15 @@ library(RColorBrewer)
 library(shinyWidgets)
 
 # Load data
-breast_cancer_long <- read.csv("breast_cancer.csv")
+breast_cancer_long <- read.csv("breast_cancer_long.csv")
+cervical_cancer_long <- read.csv("cervical_cancer_long.csv")
 
 navbarPage(
   title = "Women's Health in the United States",
   theme = bs_theme(
     bg = "#FFFFFF",
     fg = "#2C3E50",
-    primary = "#FF8BA0",
+    primary = "#2C3E50",
     base_font = font_google("Roboto")
   ),
   
@@ -59,6 +60,7 @@ navbarPage(
   ),
   
   navbarMenu("Cancer",
+     
              tabPanel("Breast Cancer",
                       div(style = "background: linear-gradient(135deg, #FFF5F7 0%, #FFE4E9 100%); 
                                    min-height: 100vh; padding: 40px 20px;",
@@ -118,9 +120,10 @@ navbarPage(
                               )
                           ),
                           
-                          # Chart Section
+                          # Chart Section - By Race
                           div(style = "background: white; padding: 30px; 
-                                       border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);",
+                                       border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                                       margin-bottom: 30px;",
                               
                               h2("Breast Cancer Incidence by Race", 
                                  style = "color: #2C3E50; margin-bottom: 20px;"),
@@ -147,14 +150,54 @@ navbarPage(
                                   plotOutput("breast_race_plot", height = "500px")
                                 )
                               )
+                          ),
+                          
+                          # Top States Ranking Section
+                          div(style = "background: white; padding: 30px; 
+                                       border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);",
+                              
+                              h2("Top States by Breast Cancer Rates", 
+                                 style = "color: #2C3E50; margin-bottom: 20px;"),
+                              
+                              sidebarLayout(
+                                sidebarPanel(
+                                  style = "background: #FFF5F7; border-radius: 10px; padding: 20px;",
+                                  
+                                  sliderInput("top_n", 
+                                              "Number of states to show:",
+                                              min = 5, 
+                                              max = 20, 
+                                              value = 10,
+                                              step = 1),
+                                  
+                                  selectInput("rank_race", 
+                                              "Select Race/Ethnicity:",
+                                              choices = unique(breast_cancer_long$race),
+                                              selected = "Overall"),
+                                  
+                                  hr(style = "border-color: #FFB6C1;"),
+                                  
+                                  div(style = "background: white; padding: 15px; border-radius: 8px;",
+                                      p("This chart ranks states by breast cancer incidence rates, 
+                                        helping identify areas with the highest rates for targeted interventions.", 
+                                        style = "color: #555; margin: 0;")
+                                  )
+                                ),
+                                
+                                mainPanel(
+                                  plotOutput("top_states_plot", height = "600px")
+                                )
+                              )
                           )
                       )
              ),
              
+ 
              tabPanel("Cervical Cancer",
-                      div(style = "background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%); 
+                      div(style = "background: linear-gradient(135deg, #E0F7FA 0%, #B2EBF2 100%); 
                                    min-height: 100vh; padding: 40px 20px;",
                           
+                          # Header Section
                           div(style = "text-align: center; margin-bottom: 40px; 
                                        background: white; padding: 30px; 
                                        border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);",
@@ -162,6 +205,121 @@ navbarPage(
                                  style = "color: #2C3E50; font-weight: 700; margin-bottom: 10px;"),
                               p("Statement - intro to topic of discussion",
                                 style = "color: #555; font-size: 18px; margin: 0;")
+                          ),
+                          
+                          # Map Section
+                          div(style = "background: white; padding: 30px; 
+                                       border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                                       margin-bottom: 30px;",
+                              
+                              h2("Cervical Cancer Rates by State and Race", 
+                                 style = "color: #2C3E50; margin-bottom: 20px;"),
+                              
+                              fluidRow(
+                                column(12,
+                                       p("Explore cervical cancer incidence rates across the United States. 
+                                         Use the dropdown to filter by race/ethnicity and see how rates 
+                                         vary geographically.",
+                                         style = "color: #555; font-size: 16px; margin-bottom: 20px;")
+                                )
+                              ),
+                              
+                              sidebarLayout(
+                                sidebarPanel(
+                                  style = "background: #E0F7FA; border-radius: 10px; padding: 20px;",
+                                  
+                                  selectInput("cervical_race_filter", 
+                                              "Select Race/Ethnicity:",
+                                              choices = c("All"),
+                                              selected = "All"),
+                                  
+                                  hr(style = "border-color: #80DEEA;"),
+                                  
+                                  div(style = "background: white; padding: 15px; border-radius: 8px;",
+                                      h4("Map Guide", style = "color: #00838F; margin-top: 0;"),
+                                      tags$ul(
+                                        style = "color: #555; line-height: 1.8;",
+                                        tags$li("Hover over states for exact rates"),
+                                        tags$li("Change race filter to update map"),
+                                        tags$li("Darker colors = higher rates")
+                                      )
+                                  )
+                                ),
+                                
+                                mainPanel(
+                                  leafletOutput("cervical_map", height = "550px")
+                                )
+                              )
+                          ),
+                          
+                          # Chart Section - By Race
+                          div(style = "background: white; padding: 30px; 
+                                       border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                                       margin-bottom: 30px;",
+                              
+                              h2("Cervical Cancer Incidence by Race", 
+                                 style = "color: #2C3E50; margin-bottom: 20px;"),
+                              
+                              sidebarLayout(
+                                sidebarPanel(
+                                  style = "background: #E0F7FA; border-radius: 10px; padding: 20px;",
+                                  
+                                  selectInput("cervical_state", 
+                                              "Choose a state:",
+                                              choices = unique(cervical_cancer_long$state),
+                                              selected = "United States"),
+                                  
+                                  hr(style = "border-color: #80DEEA;"),
+                                  
+                                  div(style = "background: white; padding: 15px; border-radius: 8px;",
+                                      p("This chart shows cervical cancer incidence rates by race/ethnicity 
+                                        for your selected state.", 
+                                        style = "color: #555; margin: 0;")
+                                  )
+                                ),
+                                
+                                mainPanel(
+                                  plotOutput("cervical_race_plot", height = "500px")
+                                )
+                              )
+                          ),
+                          
+                          # Top States Ranking Section
+                          div(style = "background: white; padding: 30px; 
+                                       border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);",
+                              
+                              h2("Top States by Cervical Cancer Rates", 
+                                 style = "color: #2C3E50; margin-bottom: 20px;"),
+                              
+                              sidebarLayout(
+                                sidebarPanel(
+                                  style = "background: #E0F7FA; border-radius: 10px; padding: 20px;",
+                                  
+                                  sliderInput("cervical_top_n", 
+                                              "Number of states to show:",
+                                              min = 5, 
+                                              max = 20, 
+                                              value = 10,
+                                              step = 1),
+                                  
+                                  selectInput("cervical_rank_race", 
+                                              "Select Race/Ethnicity:",
+                                              choices = unique(cervical_cancer_long$race),
+                                              selected = "Overall"),
+                                  
+                                  hr(style = "border-color: #80DEEA;"),
+                                  
+                                  div(style = "background: white; padding: 15px; border-radius: 8px;",
+                                      p("This chart ranks states by cervical cancer incidence rates, 
+                                        helping identify areas with the highest rates for targeted interventions.", 
+                                        style = "color: #555; margin: 0;")
+                                  )
+                                ),
+                                
+                                mainPanel(
+                                  plotOutput("cervical_top_states_plot", height = "600px")
+                                )
+                              )
                           )
                       )
              )
