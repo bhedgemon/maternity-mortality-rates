@@ -9,7 +9,7 @@ library(RColorBrewer)
 library(shinyWidgets)
 
 # Load data
-breast_cancer_long <- read.csv("breast_cancer_long.csv")
+breast_cancer_long <- read.csv("breast_cancer.csv")
 
 navbarPage(
   title = "Women's Health in the United States",
