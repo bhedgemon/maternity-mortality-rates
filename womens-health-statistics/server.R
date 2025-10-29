@@ -7,7 +7,7 @@ library(sf)
 library(ggplot2)
 
 states <- read_sf("us-states.geojson")
-breast_cancer_long <- read.csv("breast_cancer.csv") 
+breast_cancer_long <- read.csv("breast_cancer_long.csv") 
 
 server <- function(input, output, session) {
   
