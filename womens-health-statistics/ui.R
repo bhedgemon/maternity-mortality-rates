@@ -27,8 +27,13 @@ navbarPage(
                fluidRow(
                  column(12,
                         h2("Welcome", style = "color: #2C3E50; font-weight: 700;"),
-                        p("This interactive website explores women's health across 
-                          the United States. We put a specific focus on disparities by state and race/ethnicity.",
+                        p(" Women’s health disparities and outcomes 
+                          have been severely overlooked throughout medical research history. Oftentimes, 
+                          this can lead to disproportionate access to healthcare and medical 
+                          interventions, especially for marginalized populations. Our interactive website 
+                          aims to highlight data from the CDC WONDER Online Database grouped 
+                          by state and race to assess the quality of health and living for women 
+                          across the United States. ",
                           style = "font-size: 16px;"),
                         
                         h3("About This Project", style = "color: #2C3E50; margin-top: 30px;"),
@@ -52,8 +57,23 @@ navbarPage(
                           style = "font-size: 16px;"),
                         
                         br(),
-                        p(strong("Data Sources:"), "Information about your data sources here...",
-                          style = "font-size: 16px;")
+                        p(strong("Data Sources:"), "All datasets were retrieved from KFF 
+  (originally Kaiser Family Foundation), a public charity and national 
+  nonprofit that serves to provide data and research on health policy
+  and health disparities across the United States. KFF currently researches
+  Women's Health policy through their Policy Analysis sector. Datasets on 
+  women's health disparities used data from the WONDER Online Database from the 
+  United States Department of Health and Human Services, Centers for Disease Control 
+  and Prevention and National Cancer Institute (CDC WONDER Online Database). 
+  All data after 1989 meets the National Center for Health Statistics data use 
+  restrictions, where missing values are due to state incidence data not meeting 
+  publication criteria. Suppressed values replace incidence rate, death counts, 
+  death rates and associated confidence intervals and standard errors, as well 
+  as corresponding population figures, when the figure represents one to nine 
+  (1-9) persons for deaths 1999 and after (About Us, 
+  retrieved from ", 
+                          a(href = "https://www.kff.org/about-us/", "https://www.kff.org/about-us/"), 
+                          ").")
                  )
                )
            )
