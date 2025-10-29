@@ -23,58 +23,108 @@ navbarPage(
   
   # Home Page Tab
   tabPanel("Home",
-           div(style = "padding: 40px 20px;",
-               fluidRow(
-                 column(12,
-                        h2("Welcome", style = "color: #2C3E50; font-weight: 700;"),
-                        p(" Women’s health disparities and outcomes 
-                          have been severely overlooked throughout medical research history. Oftentimes, 
-                          this can lead to disproportionate access to healthcare and medical 
-                          interventions, especially for marginalized populations. Our interactive website 
-                          aims to highlight data from the CDC WONDER Online Database grouped 
-                          by state and race to assess the quality of health and living for women 
-                          across the United States. ",
-                          style = "font-size: 16px;"),
-                        
-                        h3("About This Project", style = "color: #2C3E50; margin-top: 30px;"),
-                        p("Understanding health disparities is crucial for improving outcomes 
-                          for all women. This dashboard visualizes data on maternal mortality 
-                          and other health conditions to highlight where interventions are most needed.",
-                          style = "font-size: 16px;"),
-                        
-                        h3("What You'll Find Here", style = "color: #2C3E50; margin-top: 30px;"),
-                        tags$ul(
-                          style = "font-size: 16px; line-height: 1.8;",
-                          tags$li("Interactive maps showing maternal mortality by state and race"),
-                          tags$li("Analysis of health disparities across different populations"),
-                          tags$li("Data-driven insights to inform policy and healthcare decisions")
-                        ),
-                        
-                        h3("How to Use This Dashboard", style = "color: #2C3E50; margin-top: 30px;"),
-                        p("Navigate using the tabs above to explore different visualizations. 
-                          Use the filters to focus on specific racial/ethnic groups or states 
-                          of interest.",
-                          style = "font-size: 16px;"),
-                        
-                        br(),
-                        p(strong("Data Sources:"), "All datasets were retrieved from KFF 
-  (originally Kaiser Family Foundation), a public charity and national 
-  nonprofit that serves to provide data and research on health policy
-  and health disparities across the United States. KFF currently researches
-  Women's Health policy through their Policy Analysis sector. Datasets on 
-  women's health disparities used data from the WONDER Online Database from the 
-  United States Department of Health and Human Services, Centers for Disease Control 
-  and Prevention and National Cancer Institute (CDC WONDER Online Database). 
-  All data after 1989 meets the National Center for Health Statistics data use 
-  restrictions, where missing values are due to state incidence data not meeting 
-  publication criteria. Suppressed values replace incidence rate, death counts, 
-  death rates and associated confidence intervals and standard errors, as well 
-  as corresponding population figures, when the figure represents one to nine 
-  (1-9) persons for deaths 1999 and after (About Us, 
-  retrieved from ", 
-                          a(href = "https://www.kff.org/about-us/", "https://www.kff.org/about-us/"), 
-                          ").")
-                 )
+           div(style = "background-color: #F3E4F5; min-height: 100vh; padding: 0;",
+               # Header section with title
+               div(style = "background: #white; 
+                            padding: 60px 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);",
+                   h1("Women's Health Disparities Dashboard", 
+                      style = "color: #2C3E50; font-family: 'Roboto', sans-serif; 
+                               font-weight: 700; font-size: 48px; margin: 0;")
+               ),
+               
+               # Main content
+               div(style = "padding: 40px 20px; font-family: 'Roboto', sans-serif;",
+                   fluidRow(
+                     # Left column with text
+                     column(6,
+                            div(style = "background-color: white; padding: 30px; 
+                                         border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);",
+                                p("Women's health disparities and outcomes 
+                                  have been severely overlooked throughout medical research history. Oftentimes, 
+                                  this can lead to disproportionate access to healthcare and medical 
+                                  interventions, especially for marginalized populations. Our interactive website 
+                                  aims to highlight data from the CDC WONDER Online Database grouped 
+                                  by state and race to assess the quality of health and living for women 
+                                  across the United States.",
+                                  style = "font-size: 18px; line-height: 1.8; color: #2C3E50;"),
+                                
+                                h3("About This Project", 
+                                   style = "color: #2C3E50; margin-top: 30px; font-weight: 600;"),
+                                p("Understanding health disparities is crucial for improving outcomes 
+                                  for all women. This dashboard visualizes data on maternal mortality 
+                                  and other health conditions to highlight where interventions are most needed.",
+                                  style = "font-size: 16px; line-height: 1.8; color: #2C3E50;")
+                            )
+                     ),
+                     
+                     # Right column with image
+                     column(6,
+                            div(style = "background-color: white; padding: 20px; 
+                                         border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);",
+                                img(src = "https://p7.hiclipart.com/preview/972/512/1019/5bfcc0ef600d3.jpg",
+                                    style = "width: 100%; border-radius: 10px;")
+                            )
+                     )
+                   ),
+                   
+                   # Second row with image and content
+                   fluidRow(style = "margin-top: 30px;",
+                            column(6,
+                                   div(style = "background-color: white; padding: 20px; 
+                                         border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);",
+                                       img(src = "https://www.nysut.org/-/media/images/nysut/news/2022/july/banner_220706_womenshealth_01.jpg",
+                                           style = "width: 100%; border-radius: 10px;")
+                                   )
+                            ),
+                            
+                            column(6,
+                                   div(style = "background-color: white; padding: 30px; 
+                                         border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);",
+                                       h3("What You'll Find Here", 
+                                          style = "color: #2C3E50; font-weight: 600;"),
+                                       tags$ul(
+                                         style = "font-size: 16px; line-height: 1.8; color: #2C3E50;",
+                                         tags$li("Interactive maps showing maternal mortality by state and race"),
+                                         tags$li("Analysis of health disparities across different populations"),
+                                         tags$li("Data-driven insights to inform policy and healthcare decisions")
+                                       ),
+                                       
+                                       h3("How to Use This Dashboard", 
+                                          style = "color: #2C3E50; margin-top: 30px; font-weight: 600;"),
+                                       p("Navigate using the tabs above to explore different visualizations. 
+                                  Use the filters to focus on specific racial/ethnic groups or states 
+                                  of interest.",
+                                         style = "font-size: 16px; line-height: 1.8; color: #2C3E50;")
+                                   )
+                            )
+                   ),
+                   
+                   # Data Sources section
+                   fluidRow(style = "margin-top: 30px;",
+                            column(12,
+                                   div(style = "background-color: white; padding: 30px; 
+                                         border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);",
+                                       p(strong("Data Sources:"), "All datasets were retrieved from KFF 
+                                  (originally Kaiser Family Foundation), a public charity and national 
+                                  nonprofit that serves to provide data and research on health policy
+                                  and health disparities across the United States. KFF currently researches
+                                  Women's Health policy through their Policy Analysis sector. Datasets on 
+                                  women's health disparities used data from the WONDER Online Database from the 
+                                  United States Department of Health and Human Services, Centers for Disease Control 
+                                  and Prevention and National Cancer Institute (CDC WONDER Online Database). 
+                                  All data after 1989 meets the National Center for Health Statistics data use 
+                                  restrictions, where missing values are due to state incidence data not meeting 
+                                  publication criteria. Suppressed values replace incidence rate, death counts, 
+                                  death rates and associated confidence intervals and standard errors, as well 
+                                  as corresponding population figures, when the figure represents one to nine 
+                                  (1-9) persons for deaths 1999 and after (About Us, 
+                                  retrieved from ", 
+                                         a(href = "https://www.kff.org/about-us/", "https://www.kff.org/about-us/"), 
+                                         ").",
+                                         style = "font-size: 16px; line-height: 1.8; color: #2C3E50;")
+                                   )
+                            )
+                   )
                )
            )
   ),
