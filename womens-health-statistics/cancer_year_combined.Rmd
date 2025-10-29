@@ -5,6 +5,431 @@ date: "2025-10-29"
 output: html_document
 ---
 
+# Joining the data
 ```{r}
+library(tidyverse)
+library(lubridate)
+library(dplyr)
+library(sf)
+```
+
+# Load in Datasets
+```{r}
+chlamydia20 <- read.csv("2020_chlamydia.csv")
+chlamydia21 <- read.csv("2021_chlamydia.csv")
+chlamydia22 <- read.csv("2022_chlamydia.csv")
+chlamydia23 <- read.csv("2023_chlamydia.csv")
+gonorrhea20 <- read.csv("2020_gonorrhea.csv")
+gonorrhea21 <- read.csv("2021_gonorrhea.csv")
+gonorrhea22 <- read.csv("2022_gonorrhea.csv")
+gonorrhea23 <- read.csv("2023_gonorrhea.csv")
+syphilis20 <- read.csv("2020_syphilis.csv")
+syphilis21 <- read.csv("2021_syphilis.csv")
+syphilis22 <- read.csv("2022_syphilis.csv")
+syphilis23 <- read.csv("2023_syphilis.csv")
+code_state <- read_sf("code_state.geojson")
+chlamydia_test <- read.csv("chlamydia_test.csv")
+```
+
+# Rename State Columns
+```{r}
+# Chlamydia
+chlamydia20 <- chlamydia20 %>%
+  rename(state = Location)
+
+chlamydia21 <- chlamydia21%>%
+  rename(state = Location)
+
+chlamydia22 <- chlamydia22 %>%
+  rename(state = Location)
+
+chlamydia23 <- chlamydia23 %>%
+  rename(name = Location)
+
+# Gonorrhea
+gonorrhea20 <- gonorrhea20 %>%
+  rename(state = Location)
+
+gonorrhea21 <- gonorrhea21%>%
+  rename(state = Location)
+
+gonorrhea22 <- gonorrhea22 %>%
+  rename(state = Location)
+
+gonorrhea23 <- gonorrhea23 %>%
+  rename(state = Location)
+
+# Syphilis
+syphilis20 <- syphilis20 %>%
+  rename(state = Location)
+
+syphilis21 <- syphilis21%>%
+  rename(state = Location)
+
+syphilis22 <- syphilis22 %>%
+  rename(state = Location)
+
+syphilis23 <- syphilis23 %>%
+  rename(state = Location)
+
 
 ```
+
+# rename race columns
+```{r}
+chlamydia20 <- chlamydia20%>%
+  rename(Black = Black.African.American,
+         Hispanic = Hispanic.Latino,
+         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
+         Overall = Total)
+
+chlamydia21 <- chlamydia21%>%
+  rename(Black = Black.African.American,
+         Hispanic = Hispanic.Latino,
+         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
+         Overall = Total)
+
+chlamydia22 <- chlamydia22 %>%
+  rename(Black = Black.African.American,
+         Hispanic = Hispanic.Latino,
+         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
+         Overall = Total)
+
+chlamydia23 <- chlamydia23 %>%
+  rename(Black = Black.African.American,
+         Hispanic = Hispanic.Latino,
+         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
+         Overall = Total)
+
+# Gonorrhea
+gonorrhea20 <- gonorrhea20%>%
+  rename(Black = Black.African.American,
+         Hispanic = Hispanic.Latino,
+         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
+         Overall = Total)
+
+gonorrhea21 <- gonorrhea21%>%
+  rename(Black = Black.African.American,
+         Hispanic = Hispanic.Latino,
+         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
+         Overall = Total)
+
+gonorrhea22 <- gonorrhea22 %>%
+  rename(Black = Black.African.American,
+         Hispanic = Hispanic.Latino,
+         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
+         Overall = Total)
+
+gonorrhea23 <- gonorrhea23 %>%
+  rename(Black = Black.African.American,
+         Hispanic = Hispanic.Latino,
+         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
+         Overall = Total)
+
+# Syphilis
+syphilis20 <- syphilis20%>%
+  rename(Black = Black.African.American,
+         Hispanic = Hispanic.Latino,
+         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
+         Overall = Total)
+
+syphilis21 <- syphilis21%>%
+  rename(Black = Black.African.American,
+         Hispanic = Hispanic.Latino,
+         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
+         Overall = Total)
+
+syphilis22 <- syphilis22 %>%
+  rename(Black = Black.African.American,
+         Hispanic = Hispanic.Latino,
+         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
+         Overall = Total)
+
+syphilis23 <- syphilis23 %>%
+  rename(Black = Black.African.American,
+         Hispanic = Hispanic.Latino,
+         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
+         Overall = Total)
+```
+
+# add a year column
+```{r}
+# Chlamydia
+chlamydia20y <- chlamydia20 %>%
+  mutate(year = 2020)
+
+chlamydia21y <- chlamydia21 %>%
+  mutate(year = 2021)
+
+chlamydia22y <- chlamydia22 %>%
+  mutate(year = 2022)
+
+chlamydia23y <- chlamydia23 %>%
+  mutate(year = 2023)
+
+# Gonorrhea
+gonorrhea20y <- gonorrhea20 %>%
+  mutate(year = 2020)
+
+gonorrhea21y <- gonorrhea21 %>%
+  mutate(year = 2021)
+
+gonorrhea22y <- gonorrhea22 %>%
+  mutate(year = 2022)
+
+gonorrhea23y <- gonorrhea23 %>%
+  mutate(year = 2023)
+
+# Syphilis
+syphilis20y <- syphilis20 %>%
+  mutate(year = 2020)
+
+syphilis21y <- syphilis21 %>%
+  mutate(year = 2021)
+
+syphilis22y <- syphilis22 %>%
+  mutate(year = 2022)
+
+syphilis23y <- syphilis23 %>%
+  mutate(year = 2023)
+```
+
+# deleting footnote column
+```{r}
+# Chlamydia
+chlamydia20y$Footnotes <- NULL
+chlamydia21y$Footnotes <- NULL
+chlamydia22y$Footnotes <- NULL
+chlamydia23y$Footnotes <- NULL
+
+# Gonorrhea
+gonorrhea20y$Footnotes <- NULL
+gonorrhea21y$Footnotes <- NULL
+gonorrhea22y$Footnotes <- NULL
+gonorrhea23y$Footnotes <- NULL
+
+# Syphilis
+syphilis20y$Footnotes <- NULL
+syphilis21y$Footnotes <- NULL
+syphilis22y$Footnotes <- NULL
+syphilis23y$Footnotes <- NULL
+```
+
+# convert numeric
+```{r}
+# Chlamydia
+chlamydia20y <- chlamydia20y %>%
+  mutate(across(c(White, Black,Hispanic,
+                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+                as.numeric))
+
+chlamydia21y <- chlamydia21y %>%
+  mutate(across(c(White, Black,Hispanic,
+                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+                as.numeric))
+
+chlamydia22y <- chlamydia22y %>%
+  mutate(across(c(White, Black,Hispanic,
+                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+                as.numeric))
+
+chlamydia23y <- chlamydia23y %>%
+  mutate(across(c(White, Black,Hispanic,
+                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+                as.numeric))
+
+# Gonorrhea
+gonorrhea20y <- gonorrhea20y %>%
+  mutate(across(c(White, Black,Hispanic,
+                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+                as.numeric))
+
+gonorrhea21y <- gonorrhea21y %>%
+  mutate(across(c(White, Black,Hispanic,
+                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+                as.numeric))
+
+gonorrhea22y <- gonorrhea22y %>%
+  mutate(across(c(White, Black,Hispanic,
+                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+                as.numeric))
+
+gonorrhea23y <- gonorrhea23y %>%
+  mutate(across(c(White, Black,Hispanic,
+                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+                as.numeric))
+
+# Syphilis
+syphilis20y <- syphilis20y %>%
+  mutate(across(c(White, Black,Hispanic,
+                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+                as.numeric))
+syphilis21y <- syphilis21y %>%
+  mutate(across(c(White, Black,Hispanic,
+                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+                as.numeric))
+
+syphilis22y <- syphilis22y %>%
+  mutate(across(c(White, Black,Hispanic,
+                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+                as.numeric))
+
+syphilis23y <- syphilis23y %>%
+  mutate(across(c(White, Black,Hispanic,
+                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+                as.numeric))
+
+```
+
+
+# Tidy Long
+```{r}
+# Chlamydia
+chlamydia20_long <- chlamydia20y %>%
+  pivot_longer(c("White", 
+                 "Black", 
+                 "Hispanic",
+                 "AmericanIndian_AlaskaNative",
+                 "Asian",
+                 "Native.Hawaiian.or.Pacific.Islander",
+                 "Multiple.races",
+                 "Overall"),
+               names_to = "race", 
+               values_to = "chlamydia")
+
+chlamydia21_long <- chlamydia21y %>%
+  pivot_longer(c("White", 
+                 "Black", 
+                 "Hispanic",
+                 "AmericanIndian_AlaskaNative",
+                 "Asian",
+                 "Native.Hawaiian.or.Pacific.Islander",
+                 "Multiple.races",
+                 "Overall"),
+               names_to = "race", 
+               values_to = "chlamydia")
+
+chlamydia22_long <- chlamydia22y %>%
+  pivot_longer(c("White", 
+                 "Black", 
+                 "Hispanic",
+                 "AmericanIndian_AlaskaNative",
+                 "Asian",
+                 "Native.Hawaiian.or.Pacific.Islander",
+                 "Multiple.races",
+                 "Overall"),
+               names_to = "race", 
+               values_to = "chlamydia")
+
+chlamydia23_long <- chlamydia23y %>%
+  pivot_longer(c("White", 
+                 "Black", 
+                 "Hispanic",
+                 "AmericanIndian_AlaskaNative",
+                 "Asian",
+                 "Native.Hawaiian.or.Pacific.Islander",
+                 "Multiple.races",
+                 "Overall"),
+               names_to = "race", 
+               values_to = "chlamydia")
+
+# Gonorrhea
+gonorrhea20_long <- gonorrhea20y %>%
+  pivot_longer(c("White", 
+                 "Black", 
+                 "Hispanic",
+                 "AmericanIndian_AlaskaNative",
+                 "Asian",
+                 "Native.Hawaiian.or.Pacific.Islander",
+                 "Multiple.races",
+                 "Overall"),
+               names_to = "race", 
+               values_to = "gonorrhea")
+
+gonorrhea21_long <- gonorrhea21y %>%
+  pivot_longer(c("White", 
+                 "Black", 
+                 "Hispanic",
+                 "AmericanIndian_AlaskaNative",
+                 "Asian",
+                 "Native.Hawaiian.or.Pacific.Islander",
+                 "Multiple.races",
+                 "Overall"),
+               names_to = "race", 
+               values_to = "gonorrhea")
+
+gonorrhea22_long <- gonorrhea22y %>%
+  pivot_longer(c("White", 
+                 "Black", 
+                 "Hispanic",
+                 "AmericanIndian_AlaskaNative",
+                 "Asian",
+                 "Native.Hawaiian.or.Pacific.Islander",
+                 "Multiple.races",
+                 "Overall"),
+               names_to = "race", 
+               values_to = "gonorrhea")
+
+gonorrhea23_long <- gonorrhea23y %>%
+  pivot_longer(c("White", 
+                 "Black", 
+                 "Hispanic",
+                 "AmericanIndian_AlaskaNative",
+                 "Asian",
+                 "Native.Hawaiian.or.Pacific.Islander",
+                 "Multiple.races",
+                 "Overall"),
+               names_to = "race", 
+               values_to = "gonorrhea")
+
+# Syphilis
+syphilis20_long <- syphilis20y %>%
+  pivot_longer(c("White", 
+                 "Black", 
+                 "Hispanic",
+                 "AmericanIndian_AlaskaNative",
+                 "Asian",
+                 "Native.Hawaiian.or.Pacific.Islander",
+                 "Multiple.races",
+                 "Overall"),
+               names_to = "race", 
+               values_to = "syphilis")
+
+syphilis21_long <- syphilis21y %>%
+  pivot_longer(c("White", 
+                 "Black", 
+                 "Hispanic",
+                 "AmericanIndian_AlaskaNative",
+                 "Asian",
+                 "Native.Hawaiian.or.Pacific.Islander",
+                 "Multiple.races",
+                 "Overall"),
+               names_to = "race", 
+               values_to = "syphilis")
+
+syphilis22_long <- syphilis22y %>%
+  pivot_longer(c("White", 
+                 "Black", 
+                 "Hispanic",
+                 "AmericanIndian_AlaskaNative",
+                 "Asian",
+                 "Native.Hawaiian.or.Pacific.Islander",
+                 "Multiple.races",
+                 "Overall"),
+               names_to = "race", 
+               values_to = "syphilis")
+
+syphilis23_long <- syphilis23y %>%
+  pivot_longer(c("White", 
+                 "Black", 
+                 "Hispanic",
+                 "AmericanIndian_AlaskaNative",
+                 "Asian",
+                 "Native.Hawaiian.or.Pacific.Islander",
+                 "Multiple.races",
+                 "Overall"),
+               names_to = "race", 
+               values_to = "syphilis")
+```
+
+
