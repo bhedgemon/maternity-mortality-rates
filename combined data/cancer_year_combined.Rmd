@@ -5,6 +5,8 @@ date: "2025-10-29"
 output: html_document
 ---
 
+Breast Cancer Deaths over the years
+
 # Joining the data
 ```{r}
 library(tidyverse)
@@ -15,421 +17,359 @@ library(sf)
 
 # Load in Datasets
 ```{r}
-chlamydia20 <- read.csv("2020_chlamydia.csv")
-chlamydia21 <- read.csv("2021_chlamydia.csv")
-chlamydia22 <- read.csv("2022_chlamydia.csv")
-chlamydia23 <- read.csv("2023_chlamydia.csv")
-gonorrhea20 <- read.csv("2020_gonorrhea.csv")
-gonorrhea21 <- read.csv("2021_gonorrhea.csv")
-gonorrhea22 <- read.csv("2022_gonorrhea.csv")
-gonorrhea23 <- read.csv("2023_gonorrhea.csv")
-syphilis20 <- read.csv("2020_syphilis.csv")
-syphilis21 <- read.csv("2021_syphilis.csv")
-syphilis22 <- read.csv("2022_syphilis.csv")
-syphilis23 <- read.csv("2023_syphilis.csv")
-code_state <- read_sf("code_state.geojson")
-chlamydia_test <- read.csv("chlamydia_test.csv")
+breast20 <- read.csv("20_bc.csv")
+breast21 <- read.csv("21_bc.csv")
+breast22 <- read.csv("22_bc.csv")
+breast23 <- read.csv("23_bc.csv")
+cervical20 <- read.csv("20_cc.csv")
+cervical21 <- read.csv("21_cc.csv")
+cervical22 <- read.csv("22_cc.csv")
+cervical23 <- read.csv("23_cc.csv")
 ```
 
 # Rename State Columns
 ```{r}
-# Chlamydia
-chlamydia20 <- chlamydia20 %>%
+# Breast Cancer Deaths
+breast20 <- breast20 %>%
   rename(state = Location)
 
-chlamydia21 <- chlamydia21%>%
+breast21 <- breast21 %>%
   rename(state = Location)
 
-chlamydia22 <- chlamydia22 %>%
+breast22 <- breast22 %>%
   rename(state = Location)
 
-chlamydia23 <- chlamydia23 %>%
-  rename(name = Location)
-
-# Gonorrhea
-gonorrhea20 <- gonorrhea20 %>%
+breast23 <- breast23 %>%
   rename(state = Location)
 
-gonorrhea21 <- gonorrhea21%>%
+# Cervical Cancer Deaths
+cervical20 <- cervical20 %>%
   rename(state = Location)
 
-gonorrhea22 <- gonorrhea22 %>%
+cervical21 <- cervical21 %>%
   rename(state = Location)
 
-gonorrhea23 <- gonorrhea23 %>%
+cervical22 <- cervical22 %>%
   rename(state = Location)
 
-# Syphilis
-syphilis20 <- syphilis20 %>%
+cervical23 <- cervical23 %>%
   rename(state = Location)
-
-syphilis21 <- syphilis21%>%
-  rename(state = Location)
-
-syphilis22 <- syphilis22 %>%
-  rename(state = Location)
-
-syphilis23 <- syphilis23 %>%
-  rename(state = Location)
-
-
 ```
 
 # rename race columns
 ```{r}
-chlamydia20 <- chlamydia20%>%
-  rename(Black = Black.African.American,
-         Hispanic = Hispanic.Latino,
-         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
-         Overall = Total)
+# Breast Cancer Deaths
+breast20 <- breast20 %>%
+  rename(American_Indian_AlaskaNative = American.Indian.or.Alaska.Native,
+         Native_Hawaiian_Pacific_Islander = Native.Hawaiian.Pacific.Islander,
+         Multiple_Races = Multiple.Races)
 
-chlamydia21 <- chlamydia21%>%
-  rename(Black = Black.African.American,
-         Hispanic = Hispanic.Latino,
-         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
-         Overall = Total)
+breast21 <- breast21 %>%
+  rename(American_Indian_AlaskaNative = American.Indian.or.Alaska.Native,
+         Native_Hawaiian_Pacific_Islander = Native.Hawaiian.Pacific.Islander,
+         Multiple_Races = Multiple.Races)
 
-chlamydia22 <- chlamydia22 %>%
-  rename(Black = Black.African.American,
-         Hispanic = Hispanic.Latino,
-         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
-         Overall = Total)
+breast22 <- breast22 %>%
+  rename(American_Indian_AlaskaNative = American.Indian.or.Alaska.Native,
+         Native_Hawaiian_Pacific_Islander = Native.Hawaiian.Pacific.Islander,
+         Multiple_Races = Multiple.Races)
 
-chlamydia23 <- chlamydia23 %>%
-  rename(Black = Black.African.American,
-         Hispanic = Hispanic.Latino,
-         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
-         Overall = Total)
+breast23 <- breast23 %>%
+  rename(American_Indian_AlaskaNative = American.Indian.or.Alaska.Native,
+         Native_Hawaiian_Pacific_Islander = Native.Hawaiian.Pacific.Islander,
+         Multiple_Races = Multiple.Races)
 
-# Gonorrhea
-gonorrhea20 <- gonorrhea20%>%
-  rename(Black = Black.African.American,
-         Hispanic = Hispanic.Latino,
-         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
-         Overall = Total)
+# Cervical Cancer Deaths
+cervical20 <- cervical20 %>%
+  rename(American_Indian_AlaskaNative = American.Indian.or.Alaska.Native,
+         Native_Hawaiian_Pacific_Islander = Native.Hawaiian.Pacific.Islander,
+         Multiple_Races = Multiple.Races)
 
-gonorrhea21 <- gonorrhea21%>%
-  rename(Black = Black.African.American,
-         Hispanic = Hispanic.Latino,
-         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
-         Overall = Total)
+cervical21 <- cervical21 %>%
+  rename(American_Indian_AlaskaNative = American.Indian.or.Alaska.Native,
+         Native_Hawaiian_Pacific_Islander = Native.Hawaiian.Pacific.Islander,
+         Multiple_Races = Multiple.Races)
 
-gonorrhea22 <- gonorrhea22 %>%
-  rename(Black = Black.African.American,
-         Hispanic = Hispanic.Latino,
-         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
-         Overall = Total)
+cervical22 <- cervical22 %>%
+  rename(American_Indian_AlaskaNative = American.Indian.or.Alaska.Native,
+         Native_Hawaiian_Pacific_Islander = Native.Hawaiian.Pacific.Islander,
+         Multiple_Races = Multiple.Races)
 
-gonorrhea23 <- gonorrhea23 %>%
-  rename(Black = Black.African.American,
-         Hispanic = Hispanic.Latino,
-         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
-         Overall = Total)
-
-# Syphilis
-syphilis20 <- syphilis20%>%
-  rename(Black = Black.African.American,
-         Hispanic = Hispanic.Latino,
-         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
-         Overall = Total)
-
-syphilis21 <- syphilis21%>%
-  rename(Black = Black.African.American,
-         Hispanic = Hispanic.Latino,
-         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
-         Overall = Total)
-
-syphilis22 <- syphilis22 %>%
-  rename(Black = Black.African.American,
-         Hispanic = Hispanic.Latino,
-         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
-         Overall = Total)
-
-syphilis23 <- syphilis23 %>%
-  rename(Black = Black.African.American,
-         Hispanic = Hispanic.Latino,
-         AmericanIndian_AlaskaNative = American.Indian.Alaska.Native,
-         Overall = Total)
+cervical23 <- cervical23 %>%
+  rename(American_Indian_AlaskaNative = American.Indian.or.Alaska.Native,
+         Native_Hawaiian_Pacific_Islander = Native.Hawaiian.Pacific.Islander,
+         Multiple_Races = Multiple.Races)
 ```
 
 # add a year column
 ```{r}
-# Chlamydia
-chlamydia20y <- chlamydia20 %>%
+# Breast Cancer Deaths
+breast20y <- breast20 %>%
   mutate(year = 2020)
 
-chlamydia21y <- chlamydia21 %>%
+breast21y <- breast21 %>%
   mutate(year = 2021)
 
-chlamydia22y <- chlamydia22 %>%
+breast22y <- breast22 %>%
   mutate(year = 2022)
 
-chlamydia23y <- chlamydia23 %>%
+breast23y <- breast23 %>%
   mutate(year = 2023)
 
-# Gonorrhea
-gonorrhea20y <- gonorrhea20 %>%
+# Cervical Cancer Deaths
+cervical20y <- cervical20 %>%
   mutate(year = 2020)
 
-gonorrhea21y <- gonorrhea21 %>%
+cervical21y <- cervical21 %>%
   mutate(year = 2021)
 
-gonorrhea22y <- gonorrhea22 %>%
+cervical22y <- cervical22 %>%
   mutate(year = 2022)
 
-gonorrhea23y <- gonorrhea23 %>%
+cervical23y <- cervical23 %>%
   mutate(year = 2023)
-
-# Syphilis
-syphilis20y <- syphilis20 %>%
-  mutate(year = 2020)
-
-syphilis21y <- syphilis21 %>%
-  mutate(year = 2021)
-
-syphilis22y <- syphilis22 %>%
-  mutate(year = 2022)
-
-syphilis23y <- syphilis23 %>%
-  mutate(year = 2023)
-```
-
-# deleting footnote column
-```{r}
-# Chlamydia
-chlamydia20y$Footnotes <- NULL
-chlamydia21y$Footnotes <- NULL
-chlamydia22y$Footnotes <- NULL
-chlamydia23y$Footnotes <- NULL
-
-# Gonorrhea
-gonorrhea20y$Footnotes <- NULL
-gonorrhea21y$Footnotes <- NULL
-gonorrhea22y$Footnotes <- NULL
-gonorrhea23y$Footnotes <- NULL
-
-# Syphilis
-syphilis20y$Footnotes <- NULL
-syphilis21y$Footnotes <- NULL
-syphilis22y$Footnotes <- NULL
-syphilis23y$Footnotes <- NULL
 ```
 
 # convert numeric
 ```{r}
-# Chlamydia
-chlamydia20y <- chlamydia20y %>%
-  mutate(across(c(White, Black,Hispanic,
-                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+# Breast Cancer Deaths
+breast20y <- breast20y %>%
+  mutate(across(c(White, Black, Hispanic,
+                 American_Indian_AlaskaNative, Asian, Native_Hawaiian_Pacific_Islander, Multiple_Races, Overall), 
                 as.numeric))
 
-chlamydia21y <- chlamydia21y %>%
-  mutate(across(c(White, Black,Hispanic,
-                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+breast21y <- breast21y %>%
+  mutate(across(c(White, Black, Hispanic,
+                 American_Indian_AlaskaNative, Asian, Native_Hawaiian_Pacific_Islander, Multiple_Races, Overall), 
                 as.numeric))
 
-chlamydia22y <- chlamydia22y %>%
-  mutate(across(c(White, Black,Hispanic,
-                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+breast22y <- breast22y %>%
+  mutate(across(c(White, Black, Hispanic,
+                 American_Indian_AlaskaNative, Asian, Native_Hawaiian_Pacific_Islander, Multiple_Races, Overall), 
                 as.numeric))
 
-chlamydia23y <- chlamydia23y %>%
-  mutate(across(c(White, Black,Hispanic,
-                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+breast23y <- breast23y %>%
+  mutate(across(c(White, Black, Hispanic,
+                 American_Indian_AlaskaNative, Asian, Native_Hawaiian_Pacific_Islander, Multiple_Races, Overall), 
                 as.numeric))
 
-# Gonorrhea
-gonorrhea20y <- gonorrhea20y %>%
-  mutate(across(c(White, Black,Hispanic,
-                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+# Cervical Cancer Deaths
+cervical20y <- cervical20y %>%
+  mutate(across(c(White, Black, Hispanic,
+                 American_Indian_AlaskaNative, Asian, Native_Hawaiian_Pacific_Islander, Multiple_Races, Overall), 
                 as.numeric))
 
-gonorrhea21y <- gonorrhea21y %>%
-  mutate(across(c(White, Black,Hispanic,
-                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+cervical21y <- cervical21y %>%
+  mutate(across(c(White, Black, Hispanic,
+                 American_Indian_AlaskaNative, Asian, Native_Hawaiian_Pacific_Islander, Multiple_Races, Overall), 
                 as.numeric))
 
-gonorrhea22y <- gonorrhea22y %>%
-  mutate(across(c(White, Black,Hispanic,
-                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+cervical22y <- cervical22y %>%
+  mutate(across(c(White, Black, Hispanic,
+                 American_Indian_AlaskaNative, Asian, Native_Hawaiian_Pacific_Islander, Multiple_Races, Overall), 
                 as.numeric))
 
-gonorrhea23y <- gonorrhea23y %>%
-  mutate(across(c(White, Black,Hispanic,
-                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
+cervical23y <- cervical23y %>%
+  mutate(across(c(White, Black, Hispanic,
+                 American_Indian_AlaskaNative, Asian, Native_Hawaiian_Pacific_Islander, Multiple_Races, Overall), 
                 as.numeric))
-
-# Syphilis
-syphilis20y <- syphilis20y %>%
-  mutate(across(c(White, Black,Hispanic,
-                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
-                as.numeric))
-syphilis21y <- syphilis21y %>%
-  mutate(across(c(White, Black,Hispanic,
-                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
-                as.numeric))
-
-syphilis22y <- syphilis22y %>%
-  mutate(across(c(White, Black,Hispanic,
-                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
-                as.numeric))
-
-syphilis23y <- syphilis23y %>%
-  mutate(across(c(White, Black,Hispanic,
-                 AmericanIndian_AlaskaNative,Asian,Native.Hawaiian.or.Pacific.Islander,Multiple.races, Overall), 
-                as.numeric))
-
 ```
-
 
 # Tidy Long
 ```{r}
-# Chlamydia
-chlamydia20_long <- chlamydia20y %>%
+# Breast Cancer Deaths
+breast20_long <- breast20y %>%
   pivot_longer(c("White", 
                  "Black", 
                  "Hispanic",
-                 "AmericanIndian_AlaskaNative",
+                 "American_Indian_AlaskaNative",
                  "Asian",
-                 "Native.Hawaiian.or.Pacific.Islander",
-                 "Multiple.races",
+                 "Native_Hawaiian_Pacific_Islander",
+                 "Multiple_Races",
                  "Overall"),
                names_to = "race", 
-               values_to = "chlamydia")
+               values_to = "breast")
 
-chlamydia21_long <- chlamydia21y %>%
+breast21_long <- breast21y %>%
   pivot_longer(c("White", 
                  "Black", 
                  "Hispanic",
-                 "AmericanIndian_AlaskaNative",
+                 "American_Indian_AlaskaNative",
                  "Asian",
-                 "Native.Hawaiian.or.Pacific.Islander",
-                 "Multiple.races",
+                 "Native_Hawaiian_Pacific_Islander",
+                 "Multiple_Races",
                  "Overall"),
                names_to = "race", 
-               values_to = "chlamydia")
+               values_to = "breast")
 
-chlamydia22_long <- chlamydia22y %>%
+breast22_long <- breast22y %>%
   pivot_longer(c("White", 
                  "Black", 
                  "Hispanic",
-                 "AmericanIndian_AlaskaNative",
+                 "American_Indian_AlaskaNative",
                  "Asian",
-                 "Native.Hawaiian.or.Pacific.Islander",
-                 "Multiple.races",
+                 "Native_Hawaiian_Pacific_Islander",
+                 "Multiple_Races",
                  "Overall"),
                names_to = "race", 
-               values_to = "chlamydia")
+               values_to = "breast")
 
-chlamydia23_long <- chlamydia23y %>%
+breast23_long <- breast23y %>%
   pivot_longer(c("White", 
                  "Black", 
                  "Hispanic",
-                 "AmericanIndian_AlaskaNative",
+                 "American_Indian_AlaskaNative",
                  "Asian",
-                 "Native.Hawaiian.or.Pacific.Islander",
-                 "Multiple.races",
+                 "Native_Hawaiian_Pacific_Islander",
+                 "Multiple_Races",
                  "Overall"),
                names_to = "race", 
-               values_to = "chlamydia")
+               values_to = "breast")
 
-# Gonorrhea
-gonorrhea20_long <- gonorrhea20y %>%
+# Cervical Cancer Deaths
+cervical20_long <- cervical20y %>%
   pivot_longer(c("White", 
                  "Black", 
                  "Hispanic",
-                 "AmericanIndian_AlaskaNative",
+                 "American_Indian_AlaskaNative",
                  "Asian",
-                 "Native.Hawaiian.or.Pacific.Islander",
-                 "Multiple.races",
+                 "Native_Hawaiian_Pacific_Islander",
+                 "Multiple_Races",
                  "Overall"),
                names_to = "race", 
-               values_to = "gonorrhea")
+               values_to = "cervical")
 
-gonorrhea21_long <- gonorrhea21y %>%
+cervical21_long <- cervical21y %>%
   pivot_longer(c("White", 
                  "Black", 
                  "Hispanic",
-                 "AmericanIndian_AlaskaNative",
+                 "American_Indian_AlaskaNative",
                  "Asian",
-                 "Native.Hawaiian.or.Pacific.Islander",
-                 "Multiple.races",
+                 "Native_Hawaiian_Pacific_Islander",
+                 "Multiple_Races",
                  "Overall"),
                names_to = "race", 
-               values_to = "gonorrhea")
+               values_to = "cervical")
 
-gonorrhea22_long <- gonorrhea22y %>%
+cervical22_long <- cervical22y %>%
   pivot_longer(c("White", 
                  "Black", 
                  "Hispanic",
-                 "AmericanIndian_AlaskaNative",
+                 "American_Indian_AlaskaNative",
                  "Asian",
-                 "Native.Hawaiian.or.Pacific.Islander",
-                 "Multiple.races",
+                 "Native_Hawaiian_Pacific_Islander",
+                 "Multiple_Races",
                  "Overall"),
                names_to = "race", 
-               values_to = "gonorrhea")
+               values_to = "cervical")
 
-gonorrhea23_long <- gonorrhea23y %>%
+cervical23_long <- cervical23y %>%
   pivot_longer(c("White", 
                  "Black", 
                  "Hispanic",
-                 "AmericanIndian_AlaskaNative",
+                 "American_Indian_AlaskaNative",
                  "Asian",
-                 "Native.Hawaiian.or.Pacific.Islander",
-                 "Multiple.races",
+                 "Native_Hawaiian_Pacific_Islander",
+                 "Multiple_Races",
                  "Overall"),
                names_to = "race", 
-               values_to = "gonorrhea")
-
-# Syphilis
-syphilis20_long <- syphilis20y %>%
-  pivot_longer(c("White", 
-                 "Black", 
-                 "Hispanic",
-                 "AmericanIndian_AlaskaNative",
-                 "Asian",
-                 "Native.Hawaiian.or.Pacific.Islander",
-                 "Multiple.races",
-                 "Overall"),
-               names_to = "race", 
-               values_to = "syphilis")
-
-syphilis21_long <- syphilis21y %>%
-  pivot_longer(c("White", 
-                 "Black", 
-                 "Hispanic",
-                 "AmericanIndian_AlaskaNative",
-                 "Asian",
-                 "Native.Hawaiian.or.Pacific.Islander",
-                 "Multiple.races",
-                 "Overall"),
-               names_to = "race", 
-               values_to = "syphilis")
-
-syphilis22_long <- syphilis22y %>%
-  pivot_longer(c("White", 
-                 "Black", 
-                 "Hispanic",
-                 "AmericanIndian_AlaskaNative",
-                 "Asian",
-                 "Native.Hawaiian.or.Pacific.Islander",
-                 "Multiple.races",
-                 "Overall"),
-               names_to = "race", 
-               values_to = "syphilis")
-
-syphilis23_long <- syphilis23y %>%
-  pivot_longer(c("White", 
-                 "Black", 
-                 "Hispanic",
-                 "AmericanIndian_AlaskaNative",
-                 "Asian",
-                 "Native.Hawaiian.or.Pacific.Islander",
-                 "Multiple.races",
-                 "Overall"),
-               names_to = "race", 
-               values_to = "syphilis")
+               values_to = "cervical")
 ```
 
+#Select Necessary Columns
+```{r}
+# Breast Cancer Deaths
+breast20y_long <-
+  breast20_long %>%
+  select("state",
+         "year",
+         "race",
+         "breast")
 
+breast21y_long <-
+  breast21_long %>%
+  select("state",
+         "year",
+         "race",
+         "breast")
+
+breast22y_long <-
+  breast22_long %>%
+  select("state",
+         "year",
+         "race",
+         "breast")
+
+breast23y_long <-
+  breast23_long %>%
+  select("state",
+         "year",
+         "race",
+         "breast")
+
+# Cervical Cancer Deaths
+cervical20y_long <-
+  cervical20_long %>%
+  select("state",
+         "year",
+         "race",
+         "cervical")
+
+cervical21y_long <-
+  cervical21_long %>%
+  select("state",
+         "year",
+         "race",
+         "cervical")
+
+cervical22y_long <-
+  cervical22_long %>%
+  select("state",
+         "year",
+         "race",
+         "cervical")
+
+cervical23y_long <-
+  cervical23_long %>%
+  select("state",
+         "year",
+         "race",
+         "cervical")
+```
+
+# Bind rows
+```{r}
+breast_cancer_deaths_all <- bind_rows(
+  breast20y_long,
+  breast21y_long,
+  breast22y_long,
+  breast23y_long)
+
+cervical_cancer_deaths_all <- bind_rows(
+  cervical20y_long,
+  cervical21y_long,
+  cervical22y_long,
+  cervical23y_long)
+
+# Option 1: Add a disease identifier column to each data set before binding
+cervical_cancer_deaths_all <- cervical_cancer_deaths_all %>% mutate(cancer = "cervical")
+breast_cancer_deaths_all <- breast_cancer_deaths_all %>% mutate(cancer = "breast")
+
+# Then rename the rate column to a common name in each
+breast_cancer_deaths_all <- breast_cancer_deaths_all %>% rename(rate = breast)
+cervical_cancer_deaths_all <- cervical_cancer_deaths_all %>% rename(rate = cervical)
+
+cancer_deaths_all <- bind_rows(
+  breast_cancer_deaths_all,
+  cervical_cancer_deaths_all)
+
+cancer_all <- bind_rows(
+  breast20y_long,
+  breast21y_long,
+  breast22y_long,
+  breast23y_long,
+  cervical20y_long,
+  cervical21y_long,
+  cervical22y_long,
+  cervical23y_long)
+```
