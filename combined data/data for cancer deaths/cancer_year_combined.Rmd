@@ -373,3 +373,10 @@ cancer_all <- bind_rows(
   cervical22y_long,
   cervical23y_long)
 ```
+
+# make data set into csv
+```{r}
+write.csv(cancer_deaths_all, "cancer_deaths_years.csv", row.names = FALSE)
+
+write.csv(breast_cancer_deaths_all, "breast_cancer_deaths_years.csv", row.names = FALSE)
+```
